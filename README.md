@@ -1,4 +1,4 @@
-<h4 align="left">👋 Hi there! I'm Yash Sanikop<br>I'm a Computer Science and Engineering student at Agnel Institute of Technology and Design, Goa. I’m passionate about:<br><br>💻 Embedded systems and low-level programming<br><br>🤖 Robotics & automation (AI Tools and ChatGPT expert)<br><br>⚙️ Building smart solutions with real-world impact<br><br>🚀 Exploring new technologies and creating meaningful projects<br><br>Currently, I'm working on several projects involving microcontrollers, IoT, AI, Python automation, Graphic design, Web-development, Integration of AI in software applications, and system-level design. I'm always eager to learn, collaborate, and contribute to open-source communities.<br><br>Let's connect and build something amazing together!</h4>
+<h4 align="left"> Hi there! I'm Yash Sanikop<br>I'm a Computer Science and Engineering student at Agnel Institute of Technology and Design, Goa. I’m passionate about:<br><br> Embedded systems and low-level programming<br><br> Robotics & automation (AI Tools and ChatGPT expert)<br><br> Building smart solutions with real-world impact<br><br> Exploring new technologies and creating meaningful projects<br><br>Currently, I'm working on several projects involving microcontrollers, IoT, AI, Python automation, Graphic design, Web-development, Integration of AI in software applications, and system-level design. I'm always eager to learn, collaborate, and contribute to open-source communities.<br><br>Let's connect and build something amazing together!</h4>
 
 ###
 
@@ -96,7 +96,7 @@
 ###
 
 <div align="left">
-  <a href="https://www.instagram.com/iyashsanikop?utm_source=ig_web_button_share_sheet&igsh=MWIya3ZkZ3Q4eWt1Zw==" target="_blank">
+  <a href="https://www.instagram.com/iyashsanikop" target="_blank">
     <img src="https://img.shields.io/static/v1?message=Instagram&logo=instagram&label=&color=E4405F&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="instagram logo"  />
   </a>
   <a href="https://discord.gg/wfhKzMMTCw" target="_blank">
@@ -124,7 +124,7 @@
 
 ---
 
-### 🐍 Contribution Snake Animation
+### Contributions
 
 <p align="center">
   <img src="https://github.com/ByteLounge/ByteLounge/blob/output/snake.svg" alt="Snake animation" />
