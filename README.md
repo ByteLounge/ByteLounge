@@ -1,9 +1,6 @@
 <h4 align="left"> Hi there! I'm Yash Sanikop<br>I'm a Computer Science and Engineering student at Agnel Institute of Technology and Design, Goa. I’m passionate about:<br><br> Embedded systems and low-level programming<br><br> Robotics & automation (AI Tools and ChatGPT expert)<br><br> Building smart solutions with real-world impact<br><br> Exploring new technologies and creating meaningful projects<br><br>Currently, I'm working on several projects involving microcontrollers, IoT, AI, Python automation, Graphic design, Web-development, Integration of AI in software applications, and system-level design. I'm always eager to learn, collaborate, and contribute to open-source communities.<br><br>Let's connect and build something amazing together!</h4>
 
 
-###
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=ByteLounge&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph"  />
-</div>
 
 ###
 
