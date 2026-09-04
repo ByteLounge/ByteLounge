@@ -45,10 +45,10 @@
       <img src="./assets/cards/hackerrank-light.svg" alt="HackerRank: konuriyash" width="196" height="44" />
     </picture>
   </a>
-  <a href="https://www.instagram.com/iyashsanikop" target="_blank" rel="noopener noreferrer">
+  <a href="https://www.instagram.com/sanikopyash" target="_blank" rel="noopener noreferrer">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="./assets/cards/instagram-dark.svg" />
-      <img src="./assets/cards/instagram-light.svg" alt="Instagram: @iyashsanikop" width="196" height="44" />
+      <img src="./assets/cards/instagram-light.svg" alt="Instagram: @sanikopyash" width="196" height="44" />
     </picture>
   </a>
   <a href="mailto:sanikopyash1@gmail.com">
@@ -60,5 +60,5 @@
 </p>
 
 <p align="center">
-  <sub>🎧 <i>"Stay cozy, keep coding, let the beats play."</i> · Updated daily via GitHub Actions</sub>
+  <sub>✨ Updated daily via GitHub Actions</sub>
 </p>

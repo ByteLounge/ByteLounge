@@ -48,8 +48,8 @@ export const CONTACTS = [
   {
     key: "instagram",
     label: "instagram",
-    handle: "@iyashsanikop",
-    href: "https://www.instagram.com/iyashsanikop",
+    handle: "@sanikopyash",
+    href: "https://www.instagram.com/sanikopyash",
     icon: "instagram",
   },
   {
