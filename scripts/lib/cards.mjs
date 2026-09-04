@@ -59,8 +59,8 @@ export function posterCard(data, mode = "dark") {
   `);
 
   // Outer frame & card background
-  // Snug proportional height (removes bottom empty space)
-  const HEIGHT = 1196;
+  // Proportional height enclosing expanded calendar with zero overlap and zero empty space
+  const HEIGHT = 1218;
   parts.push(rect({ x: 0, y: 0, width: WIDTH, height: HEIGHT, rx: 16, fill: theme.bg }));
   parts.push(rect({ x: 0, y: 0, width: WIDTH, height: HEIGHT, rx: 16, fill: `url(#${hazeGradId})` }));
   parts.push(rect({ x: 0.5, y: 0.5, width: WIDTH - 1, height: HEIGHT - 1, rx: 15.5, stroke: theme.border, strokeWidth: 1 }));
@@ -317,7 +317,7 @@ export function posterCard(data, mode = "dark") {
 
   // 52-Week Contribution Calendar Grid
   y += METRIC_H + 20;
-  const CAL_BG_H = 135;
+  const CAL_BG_H = 158;
   parts.push(
     rect({
       x: PAD,
@@ -338,7 +338,7 @@ export function posterCard(data, mode = "dark") {
     parts.push(
       text(m, {
         x: PAD + 42 + idx * (mStep - 2.5),
-        y: y + 22,
+        y: y + 20,
         size: 9,
         fill: theme.muted,
         weight: 500,
@@ -347,16 +347,16 @@ export function posterCard(data, mode = "dark") {
     );
   });
 
-  // Days of week indicators
-  parts.push(text("Mon", { x: PAD + 16, y: y + 52, size: 8, fill: theme.muted, cls: "rise d48" }));
-  parts.push(text("Wed", { x: PAD + 16, y: y + 74, size: 8, fill: theme.muted, cls: "rise d48" }));
-  parts.push(text("Fri", { x: PAD + 16, y: y + 96, size: 8, fill: theme.muted, cls: "rise d48" }));
+  // Days of week indicators (Aligned to exact row baselines)
+  parts.push(text("Mon", { x: PAD + 16, y: y + 38, size: 8, fill: theme.muted, cls: "rise d48" }));
+  parts.push(text("Wed", { x: PAD + 16, y: y + 66, size: 8, fill: theme.muted, cls: "rise d48" }));
+  parts.push(text("Fri", { x: PAD + 16, y: y + 95, size: 8, fill: theme.muted, cls: "rise d48" }));
 
   // Heatmap squares (52 cols x 7 rows)
   const CELL_SIZE = 10;
   const CELL_GAP = 4.2;
   const GRID_START_X = PAD + 42;
-  const GRID_START_Y = y + 33;
+  const GRID_START_Y = y + 30;
 
   const weeks = stats.weeks.slice(-52);
   for (let w = 0; w < weeks.length; w++) {
@@ -387,8 +387,8 @@ export function posterCard(data, mode = "dark") {
     }
   }
 
-  // Legend at bottom of calendar
-  const legY = y + 120;
+  // Legend at bottom of calendar (Dedicated space below heatmap to completely avoid overlap!)
+  const legY = y + 144;
   parts.push(text("Less", { x: RIGHT - 130, y: legY, size: 8.5, fill: theme.muted }));
   [theme.gridZero, theme.gridL1, theme.gridL2, theme.gridL3, theme.gridL4].forEach((col, i) => {
     parts.push(rect({ x: RIGHT - 104 + i * 14, y: legY - 8, width: 9, height: 9, rx: 1.5, fill: col }));
