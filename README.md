@@ -58,7 +58,3 @@
     </picture>
   </a>
 </p>
-
-<p align="center">
-  <sub>✨ Updated daily via GitHub Actions</sub>
-</p>
