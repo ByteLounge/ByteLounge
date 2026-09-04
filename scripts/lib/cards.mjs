@@ -140,8 +140,10 @@ export function posterCard(data, mode = "dark") {
 
   // Lofi Girl Study Vignette (Right Side)
   parts.push(`
-    <g transform="translate(520, 32)" class="rise d10">
-      ${lofiVignette(theme, mode)}
+    <g transform="translate(520, 32)">
+      <g class="fade d6">
+        ${lofiVignette(theme, mode)}
+      </g>
     </g>
   `);
 

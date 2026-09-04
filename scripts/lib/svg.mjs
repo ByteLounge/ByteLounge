@@ -67,7 +67,7 @@ export function text(content, { x, y, size = 12, fill, weight = 400, anchor = "s
 export function icon(path, { x, y, size = 16, fill = "#ffffff", cls = "" }) {
   const scale = size / 24;
   const clsAttr = cls ? ` class="${cls}"` : "";
-  return `<g transform="translate(${x} ${y}) scale(${scale})"${clsAttr}><path d="${path}" fill="${fill}" /></g>`;
+  return `<g transform="translate(${x} ${y}) scale(${scale})"><path d="${path}" fill="${fill}"${clsAttr} /></g>`;
 }
 
 /**
@@ -76,27 +76,35 @@ export function icon(path, { x, y, size = 16, fill = "#ffffff", cls = "" }) {
 export function getStyles(theme, mode) {
   const isDark = mode === "dark";
 
-  // Stagger delays for entrance cascade
+  // Stagger delays for entrance cascade (fast smooth flow)
   let staggers = "";
   for (let i = 1; i <= 70; i++) {
-    staggers += `.d${i} { animation-delay: ${(i * 0.035).toFixed(3)}s; }\n`;
+    staggers += `.d${i} { animation-delay: ${(i * 0.015).toFixed(3)}s; }\n`;
   }
 
   return `
     <style>
       /* Entrance animation cascade */
       .rise {
-        animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
       }
       @keyframes rise {
         from {
           opacity: 0;
-          transform: translateY(14px);
+          transform: translateY(6px);
         }
         to {
           opacity: 1;
-          transform: translateY(0);
+          transform: none;
         }
+      }
+
+      .fade {
+        animation: fade 0.6s ease-out both;
+      }
+      @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
       }
 
       /* Ambient Breathing Lamp */
@@ -119,7 +127,8 @@ export function getStyles(theme, mode) {
 
       /* Cat rhythmic slow breathing */
       .cat-breathe {
-        transform-origin: 22px 18px;
+        transform-box: fill-box;
+        transform-origin: center bottom;
         animation: catBreathe 3.8s ease-in-out infinite alternate;
       }
       @keyframes catBreathe {
@@ -129,7 +138,8 @@ export function getStyles(theme, mode) {
 
       /* Steaming coffee mug */
       .steam-wisp {
-        transform-origin: 7px 2px;
+        transform-box: fill-box;
+        transform-origin: center bottom;
       }
       .steam-wisp.s1 {
         animation: steamRise 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -153,7 +163,8 @@ export function getStyles(theme, mode) {
 
       /* Writing pen subtle motion */
       .pen-write {
-        transform-origin: 91px 78px;
+        transform-box: fill-box;
+        transform-origin: center center;
         animation: penMotion 2.4s ease-in-out infinite;
       }
       @keyframes penMotion {
@@ -179,7 +190,8 @@ export function getStyles(theme, mode) {
 
       /* Equalizer dancing bars */
       .eq-bar {
-        transform-origin: bottom;
+        transform-box: fill-box;
+        transform-origin: bottom center;
         animation: eqBounce 1.2s ease-in-out infinite alternate;
       }
       .eq-bar.b1 { animation-duration: 0.8s; animation-delay: 0.1s; }

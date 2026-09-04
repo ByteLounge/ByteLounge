@@ -252,9 +252,10 @@ export function lofiPlayer(x, y, theme, mode = "dark") {
   const accentColor = isDark ? "#c084fc" : "#9333ea";
 
   return `
-    <g class="lofi-player rise d15" transform="translate(${x}, ${y})">
-      <!-- Player pill frame -->
-      <rect x="0" y="0" width="310" height="32" rx="16" fill="${pillBg}" stroke="${pillBorder}" stroke-width="1" />
+    <g transform="translate(${x}, ${y})">
+      <g class="lofi-player fade d12">
+        <!-- Player pill frame -->
+        <rect x="0" y="0" width="310" height="32" rx="16" fill="${pillBg}" stroke="${pillBorder}" stroke-width="1" />
       
       <!-- Cassette / Headphone Pulse Icon -->
       <g transform="translate(14, 8) scale(0.66)">
@@ -278,5 +279,6 @@ export function lofiPlayer(x, y, theme, mode = "dark") {
         <rect x="20" y="0" width="3" height="12" rx="1.5" fill="${accentColor}" class="eq-bar b5" />
       </g>
     </g>
+  </g>
   `;
 }
