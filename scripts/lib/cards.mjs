@@ -3,7 +3,7 @@
  * Produces unified, pixel-perfect, dark & light SVG posters.
  */
 
-import { lofiVignette, lofiPlayer } from "./art.mjs";
+import { lofiVignette, lofiPlayer, walkingCatAnimation } from "./art.mjs";
 import { CONTACTS } from "./contacts.mjs";
 import { ICONS } from "./icons.mjs";
 import { STACK_GROUPS } from "./stack.mjs";
@@ -59,8 +59,8 @@ export function posterCard(data, mode = "dark") {
   `);
 
   // Outer frame & card background
-  // Estimated height: 1480
-  const HEIGHT = 1480;
+  // Snug proportional height (removes bottom empty space)
+  const HEIGHT = 1196;
   parts.push(rect({ x: 0, y: 0, width: WIDTH, height: HEIGHT, rx: 16, fill: theme.bg }));
   parts.push(rect({ x: 0, y: 0, width: WIDTH, height: HEIGHT, rx: 16, fill: `url(#${hazeGradId})` }));
   parts.push(rect({ x: 0.5, y: 0.5, width: WIDTH - 1, height: HEIGHT - 1, rx: 15.5, stroke: theme.border, strokeWidth: 1 }));
@@ -528,51 +528,45 @@ export function posterCard(data, mode = "dark") {
     const cx = PAD + col * (CARD_W + 10);
     const cy = y + row * (CARD_H + 10);
     const d = 62 + i * 2;
-
-    // Contact card background
-    parts.push(
-      rect({
-        x: cx,
-        y: cy,
-        width: CARD_W,
-        height: CARD_H,
-        rx: 8,
-        fill: theme.cardBg,
-        stroke: theme.border,
-        cls: `rise d${d}`,
-      })
-    );
-
-    // Icon
     const p = ICONS[c.icon] || null;
-    if (p) {
-      parts.push(icon(p, { x: cx + 12, y: cy + 14, size: 16, fill: theme.accent, cls: `rise d${d}` }));
-    }
 
-    // Title
-    parts.push(
-      text(c.label, {
-        x: cx + 36,
-        y: cy + 18,
-        size: 10.5,
-        fill: theme.text,
-        weight: 700,
-        face: "display",
-        cls: `rise d${d}`,
-      })
-    );
-
-    // Handle
-    parts.push(
-      text(c.handle, {
-        x: cx + 36,
-        y: cy + 32,
-        size: 9,
-        fill: theme.muted,
-        weight: 400,
-        cls: `rise d${d}`,
-      })
-    );
+    parts.push(`
+      <a href="${c.href}" xlink:href="${c.href}" target="_blank" rel="noopener noreferrer" class="contact-card-link" aria-label="${c.label}: ${c.handle}">
+        <g class="contact-card rise d${d}">
+          ${rect({
+            x: cx,
+            y: cy,
+            width: CARD_W,
+            height: CARD_H,
+            rx: 8,
+            fill: theme.cardBg,
+            stroke: theme.border,
+            cls: "card-bg",
+          })}
+          ${p ? icon(p, { x: cx + 12, y: cy + 14, size: 16, fill: theme.accent, cls: "card-icon" }) : ""}
+          ${text(c.label, {
+            x: cx + 36,
+            y: cy + 18,
+            size: 10.5,
+            fill: theme.text,
+            weight: 700,
+            face: "display",
+            cls: "card-title",
+          })}
+          ${text(c.handle, {
+            x: cx + 36,
+            y: cy + 32,
+            size: 9,
+            fill: theme.muted,
+            weight: 400,
+            cls: "card-handle",
+          })}
+          <g transform="translate(${cx + CARD_W - 16}, ${cy + 10}) scale(0.6)" class="card-arrow" opacity="0.35">
+            <path d="M7 17L17 7M17 7H8M17 7V16" stroke="${theme.muted}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          </g>
+        </g>
+      </a>
+    `);
   });
 
   /* ------------------------------------------------------------ 6. FOOTER */
@@ -589,7 +583,11 @@ export function posterCard(data, mode = "dark") {
     })
   );
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" fill="none" role="img" aria-label="${profile.name} — lofi profile poster"><title>${profile.name} — lofi profile poster</title>${parts.join("")}</svg>`;
+  /* ------------------------------------------------------------ 7. WALKING CAT ANIMATION */
+  // Overlay above cards so cat freely roams across sections and taps contribution heatmap
+  parts.push(walkingCatAnimation(theme, stats, mode));
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" fill="none" role="img" aria-label="${profile.name} — lofi profile poster"><title>${profile.name} — lofi profile poster</title>${parts.join("")}</svg>`;
 }
 
 function divider(y, theme) {

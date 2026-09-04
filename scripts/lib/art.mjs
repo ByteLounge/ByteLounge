@@ -187,34 +187,36 @@ export function lofiVignette(theme, mode = "dark") {
 
       <!-- 6. SLEEPING GINGER CAT (Curled on desk) -->
       <g class="sleeping-cat" transform="translate(58, 142)">
-        <g class="cat-breathe">
-          <!-- Soft sleeping cushion / rug -->
-          <ellipse cx="22" cy="18" rx="24" ry="7" fill="${isDark ? '#3b2d54' : '#d8b4e2'}" opacity="0.6" />
-          
-          <!-- Cat Body (curled bean shape) -->
-          <ellipse cx="20" cy="12" rx="15" ry="9" fill="${catColor}" />
-          <!-- Fluffy belly patch -->
-          <ellipse cx="22" cy="13" rx="10" ry="5.5" fill="${catBelly}" />
-          <!-- Fur stripes -->
-          <path d="M 16 6 Q 18 10 17 14" fill="none" stroke="#b45309" stroke-width="1.2" stroke-linecap="round" />
-          <path d="M 22 5 Q 23 9 22 13" fill="none" stroke="#b45309" stroke-width="1.2" stroke-linecap="round" />
-          
-          <!-- Cat Head -->
-          <circle cx="33" cy="10" r="7" fill="${catColor}" />
-          <!-- Cat Ears -->
-          <polygon points="30,4 34,0 35,6" fill="${catColor}" />
-          <polygon points="35,4 39,1 38,7" fill="${catColor}" />
-          <polygon points="31,4 34,2 34,5" fill="#fda4af" />
-          <!-- Peaceful closed sleeping eyes (^^) -->
-          <path d="M 32 10 Q 33.5 12 35 10" fill="none" stroke="#78350f" stroke-width="0.9" stroke-linecap="round" />
-          <path d="M 36 10 Q 37.5 12 39 10" fill="none" stroke="#78350f" stroke-width="0.9" stroke-linecap="round" />
-          <!-- Tiny nose -->
-          <circle cx="36" cy="13" r="0.8" fill="#f43f5e" />
+        <!-- Soft sleeping cushion / rug (always on desk) -->
+        <ellipse cx="22" cy="18" rx="24" ry="7" fill="${isDark ? '#3b2d54' : '#d8b4e2'}" opacity="0.6" />
+        
+        <g class="sleeping-cat-body">
+          <g class="cat-breathe">
+            <!-- Cat Body (curled bean shape) -->
+            <ellipse cx="20" cy="12" rx="15" ry="9" fill="${catColor}" />
+            <!-- Fluffy belly patch -->
+            <ellipse cx="22" cy="13" rx="10" ry="5.5" fill="${catBelly}" />
+            <!-- Fur stripes -->
+            <path d="M 16 6 Q 18 10 17 14" fill="none" stroke="#b45309" stroke-width="1.2" stroke-linecap="round" />
+            <path d="M 22 5 Q 23 9 22 13" fill="none" stroke="#b45309" stroke-width="1.2" stroke-linecap="round" />
+            
+            <!-- Cat Head -->
+            <circle cx="33" cy="10" r="7" fill="${catColor}" />
+            <!-- Cat Ears -->
+            <polygon points="30,4 34,0 35,6" fill="${catColor}" />
+            <polygon points="35,4 39,1 38,7" fill="${catColor}" />
+            <polygon points="31,4 34,2 34,5" fill="#fda4af" />
+            <!-- Peaceful closed sleeping eyes (^^) -->
+            <path d="M 32 10 Q 33.5 12 35 10" fill="none" stroke="#78350f" stroke-width="0.9" stroke-linecap="round" />
+            <path d="M 36 10 Q 37.5 12 39 10" fill="none" stroke="#78350f" stroke-width="0.9" stroke-linecap="round" />
+            <!-- Tiny nose -->
+            <circle cx="36" cy="13" r="0.8" fill="#f43f5e" />
 
-          <!-- Curled Tail -->
-          <path d="M 6 12 Q 2 16 6 20 Q 14 20 18 16" fill="none" stroke="${catColor}" stroke-width="3" stroke-linecap="round" />
-          <!-- Tail white tip -->
-          <circle cx="6" cy="12" r="1.8" fill="${catBelly}" />
+            <!-- Curled Tail -->
+            <path d="M 6 12 Q 2 16 6 20 Q 14 20 18 16" fill="none" stroke="${catColor}" stroke-width="3" stroke-linecap="round" />
+            <!-- Tail white tip -->
+            <circle cx="6" cy="12" r="1.8" fill="${catBelly}" />
+          </g>
         </g>
       </g>
 
@@ -282,3 +284,157 @@ export function lofiPlayer(x, y, theme, mode = "dark") {
   </g>
   `;
 }
+
+/**
+ * Animated Cat that walks across the page, taps the contribution map,
+ * and highlights total contributions!
+ */
+export function walkingCatAnimation(theme, stats, mode = "dark") {
+  const isDark = mode === "dark";
+  const catColor = isDark ? "#e08d58" : "#d97742";
+  const catBelly = isDark ? "#fbe5d6" : "#fef3c7";
+  const catStripe = isDark ? "#b45309" : "#9a3412";
+  const bubbleBg = isDark ? "#181928" : "#ffffff";
+  const bubbleBorder = isDark ? "#f6ad55" : "#c05621";
+  const bubbleText = isDark ? "#f6ad55" : "#c05621";
+
+  // Target Tile coordinates: Week 32 (Aug), Day 3 (Wed)
+  // Calendar card at y = 660, GRID_START_X = 76, GRID_START_Y = 693
+  // cx = 76 + 32 * 14.2 = 530.4, cy = 693 + 3 * 14.2 = 735.6
+  const tileX = 530;
+  const tileY = 735;
+  const tileCenterX = tileX + 5;
+  const tileCenterY = tileY + 5;
+
+  // Speech bubble dimensions & placement directly above clicked tile
+  const bubbleW = 276;
+  const bubbleH = 32;
+  const bubbleX = tileCenterX - Math.round(bubbleW / 2); // 535 - 138 = 397
+  const bubbleY = tileY - 52; // 735 - 52 = 683
+
+  return `
+    <!-- Walking Cat Adventure & Contribution Clicker -->
+    <g class="cat-adventure">
+      <!-- 1. Highlighted Contribution Tile on the Calendar Grid -->
+      <g class="clicked-tile" transform="translate(${tileX}, ${tileY})">
+        <rect x="0" y="0" width="10" height="10" rx="2" fill="${theme.accent}" stroke="${theme.accent}" stroke-width="2" class="tile-flash" />
+      </g>
+
+      <!-- 2. Click Ripple Effect on the Contribution Map -->
+      <g class="contrib-ripple" transform="translate(${tileCenterX}, ${tileCenterY})">
+        <circle cx="0" cy="0" r="4" fill="none" stroke="${theme.accent}" stroke-width="2.5" class="ripple-circle r1" />
+        <circle cx="0" cy="0" r="4" fill="none" stroke="${theme.accent2}" stroke-width="1.8" class="ripple-circle r2" />
+        <circle cx="0" cy="0" r="4" fill="none" stroke="${theme.accent4}" stroke-width="1.2" class="ripple-circle r3" />
+        <!-- Sparkle bursts -->
+        <g class="sparkle-burst">
+          <path d="M-8,-8 L-12,-12 M8,-8 L12,-12 M-8,8 L-12,12 M8,8 L12,12" stroke="${theme.accent}" stroke-width="1.5" stroke-linecap="round" />
+        </g>
+      </g>
+
+      <!-- 3. Speech / Pop-up Bubble when cat clicks -->
+      <g class="cat-speech-bubble" transform="translate(${bubbleX}, ${bubbleY})">
+        <!-- Drop shadow -->
+        <rect x="2" y="3" width="${bubbleW}" height="${bubbleH}" rx="${bubbleH / 2}" fill="rgba(0, 0, 0, 0.28)" />
+        <!-- Main Bubble Pill -->
+        <rect x="0" y="0" width="${bubbleW}" height="${bubbleH}" rx="${bubbleH / 2}" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.5" />
+        <!-- Pointer notch pointing down to tile -->
+        <polygon points="${bubbleW / 2 - 8},${bubbleH} ${bubbleW / 2},${bubbleH + 8} ${bubbleW / 2 + 8},${bubbleH}" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.5" />
+        <line x1="${bubbleW / 2 - 7}" y1="${bubbleH - 0.5}" x2="${bubbleW / 2 + 7}" y2="${bubbleH - 0.5}" stroke="${bubbleBg}" stroke-width="2.5" />
+
+        <!-- Speech bubble text -->
+        <text x="${bubbleW / 2}" y="20.5" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="${bubbleText}" text-anchor="middle" letter-spacing="0.2">
+          🐾 Click! ${stats.total} study contributions logged ☕
+        </text>
+
+        <!-- Floating hearts & music notes -->
+        <g class="bubble-floaters">
+          <text x="${bubbleW - 20}" y="8" font-family="sans-serif" font-size="11" fill="#f472b6" class="bubble-heart">♥</text>
+          <text x="18" y="8" font-family="sans-serif" font-size="10" fill="${theme.accent2}" class="bubble-note">♪</text>
+        </g>
+      </g>
+
+      <!-- 4. The Animated Travelling Cat -->
+      <g class="cat-traveller">
+        <g class="cat-body-group">
+          <!-- Walking Leg Cycles (Active while moving) -->
+          <g class="cat-legs-walk">
+            <g class="walk-leg f1" transform="translate(24, 18)">
+              <line x1="0" y1="0" x2="0" y2="7" stroke="${catColor}" stroke-width="2.6" stroke-linecap="round" />
+              <circle cx="0.5" cy="7.5" r="1.4" fill="${catBelly}" />
+            </g>
+            <g class="walk-leg f2" transform="translate(27, 18)">
+              <line x1="0" y1="0" x2="0" y2="7" stroke="${catStripe}" stroke-width="2.6" stroke-linecap="round" />
+              <circle cx="0.5" cy="7.5" r="1.4" fill="${catBelly}" />
+            </g>
+            <g class="walk-leg b1" transform="translate(9, 18)">
+              <line x1="0" y1="0" x2="0" y2="7" stroke="${catColor}" stroke-width="2.6" stroke-linecap="round" />
+              <circle cx="0.5" cy="7.5" r="1.4" fill="${catBelly}" />
+            </g>
+            <g class="walk-leg b2" transform="translate(13, 18)">
+              <line x1="0" y1="0" x2="0" y2="7" stroke="${catStripe}" stroke-width="2.6" stroke-linecap="round" />
+              <circle cx="0.5" cy="7.5" r="1.4" fill="${catBelly}" />
+            </g>
+          </g>
+
+          <!-- Sit / Click Paws (Active while stopped at contribution map) -->
+          <g class="cat-sit-pose">
+            <!-- Back folded legs -->
+            <ellipse cx="10" cy="22" rx="4.5" ry="3" fill="${catColor}" />
+            <circle cx="8" cy="23" r="1.5" fill="${catBelly}" />
+            <!-- Front left resting paw -->
+            <ellipse cx="22" cy="22" rx="3.5" ry="2.5" fill="${catColor}" />
+            <circle cx="23" cy="23" r="1.3" fill="${catBelly}" />
+            <!-- Front right clicking paw / arm -->
+            <g class="cat-paw-clicker" transform="translate(26, 17)">
+              <line x1="0" y1="0" x2="8" y2="7" stroke="${catStripe}" stroke-width="2.6" stroke-linecap="round" />
+              <circle cx="8.5" cy="7.5" r="1.6" fill="${catBelly}" />
+            </g>
+          </g>
+
+          <!-- Cat Torso & Body -->
+          <ellipse cx="18" cy="14" rx="13" ry="8" fill="${catColor}" />
+          <!-- Fluffy underbelly -->
+          <ellipse cx="19" cy="16" rx="9" ry="5" fill="${catBelly}" />
+
+          <!-- Tabby fur stripes -->
+          <path d="M 13 8 Q 15 12 14 16" stroke="${catStripe}" stroke-width="1.2" fill="none" stroke-linecap="round" />
+          <path d="M 18 7 Q 19 11 18 16" stroke="${catStripe}" stroke-width="1.2" fill="none" stroke-linecap="round" />
+          <path d="M 23 8 Q 24 12 23 16" stroke="${catStripe}" stroke-width="1.2" fill="none" stroke-linecap="round" />
+
+          <!-- Collar with tiny golden bell -->
+          <line x1="26" y1="13" x2="27" y2="18" stroke="#e11d48" stroke-width="2" stroke-linecap="round" />
+          <circle cx="28" cy="17" r="1.5" fill="#f59e0b" />
+
+          <!-- Head -->
+          <circle cx="31" cy="11" r="7" fill="${catColor}" />
+          <!-- Ears with pink inner -->
+          <polygon points="28,6 31,1 33,7" fill="${catColor}" />
+          <polygon points="33,6 36,2 37,7" fill="${catColor}" />
+          <polygon points="29,6 31,3 32,6" fill="#fda4af" />
+          <polygon points="34,6 36,4 36,7" fill="#fda4af" />
+          
+          <!-- Eyes: Animated eyes (open while walking, happy curved ^^ while sitting) -->
+          <g class="cat-eyes-walk">
+            <circle cx="33.5" cy="10" r="1.1" fill="#1e1e2e" />
+          </g>
+          <g class="cat-eyes-sit">
+            <path d="M 32 10 Q 33.5 8.5 35 10" fill="none" stroke="#78350f" stroke-width="1.1" stroke-linecap="round" />
+          </g>
+
+          <!-- Pink Cheeks -->
+          <circle cx="33" cy="13" r="1.5" fill="#f472b6" opacity="0.65" />
+
+          <!-- Tiny nose & whiskers -->
+          <polygon points="35.5,12 37.5,12 36.5,13" fill="#f43f5e" />
+          <line x1="34" y1="12" x2="39" y2="10.5" stroke="${catBelly}" stroke-width="0.8" />
+          <line x1="34" y1="13" x2="39" y2="13.5" stroke="${catBelly}" stroke-width="0.8" />
+
+          <!-- Tail with smooth wagging animation -->
+          <path class="cat-tail-wag" d="M 5 14 Q -3 10 -1 3" stroke="${catColor}" stroke-width="2.8" fill="none" stroke-linecap="round" />
+          <circle cx="-1" cy="3" r="1.6" fill="${catBelly}" />
+        </g>
+      </g>
+    </g>
+  `;
+}
+

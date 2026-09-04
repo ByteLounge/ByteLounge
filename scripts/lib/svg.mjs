@@ -223,6 +223,344 @@ export function getStyles(theme, mode) {
         100% { opacity: 0.85; }
       }
 
+      /* ---------------- Walking Cat Adventure & Contribution Clicker ---------------- */
+      .cat-traveller {
+        transform-box: fill-box;
+        transform-origin: 20px 15px;
+        animation: catWalkJourney 24s ease-in-out infinite;
+      }
+      @keyframes catWalkJourney {
+        /* 1. Start at the study desk (x: 580, y: 175) next to Lofi Girl */
+        0%, 3% {
+          transform: translate(580px, 175px) scaleX(1);
+        }
+        /* 2. Step along desk ledge to right shelf edge */
+        6% {
+          transform: translate(680px, 180px) scaleX(1);
+        }
+        9% {
+          transform: translate(800px, 240px) scaleX(1);
+        }
+        /* 3. Trot down right margin past Tech Stack */
+        14% {
+          transform: translate(810px, 370px) scaleX(1);
+        }
+        19% {
+          transform: translate(810px, 490px) scaleX(1);
+        }
+        /* 4. Turn left to walk across into GitHub section */
+        24% {
+          transform: translate(740px, 555px) scaleX(-1);
+        }
+        28% {
+          transform: translate(620px, 565px) scaleX(-1);
+        }
+        /* 5. Jump down onto calendar card header */
+        33% {
+          transform: translate(540px, 665px) scaleX(-1);
+        }
+        /* 6. Approach the target contribution tile, turn to face it */
+        37% {
+          transform: translate(485px, 724px) scaleX(1);
+        }
+        /* 7. Paused at tile: CLICK & CELEBRATION! (Sitting happily) */
+        39%, 63% {
+          transform: translate(485px, 724px) scaleX(1);
+        }
+        /* 8. Stand up, stretch, turn left to walk off map */
+        65% {
+          transform: translate(485px, 724px) scaleX(-1);
+        }
+        /* 9. Trot left across and off calendar */
+        70% {
+          transform: translate(340px, 755px) scaleX(-1);
+        }
+        /* 10. Walk down past problem solving / LeetCode card */
+        75% {
+          transform: translate(220px, 860px) scaleX(-1);
+        }
+        /* 11. Reach Lo-Fi Lounge / Socials container section */
+        79% {
+          transform: translate(90px, 980px) scaleX(-1);
+        }
+        /* 12. Turn right to stroll across the socials */
+        83% {
+          transform: translate(80px, 1040px) scaleX(1);
+        }
+        87% {
+          transform: translate(430px, 1045px) scaleX(1);
+        }
+        /* 13. Stroll near bottom footer quote */
+        91% {
+          transform: translate(750px, 1080px) scaleX(1);
+        }
+        /* 14. Ascend gracefully along right edge back to desk */
+        94% {
+          transform: translate(810px, 780px) scaleX(-1);
+        }
+        97% {
+          transform: translate(800px, 320px) scaleX(-1);
+        }
+        /* 15. Step back onto desk cushion */
+        100% {
+          transform: translate(580px, 175px) scaleX(1);
+        }
+      }
+
+      /* Synchronize desk sleeping cat */
+      .sleeping-cat-body {
+        animation: sleepingCatSync 24s ease-in-out infinite;
+      }
+      @keyframes sleepingCatSync {
+        0%, 3% { opacity: 1; transform: none; }
+        4%, 97% { opacity: 0; transform: scale(0.96); }
+        98%, 100% { opacity: 1; transform: none; }
+      }
+
+      /* Leg Walk Cycles */
+      .walk-leg {
+        transform-box: fill-box;
+        transform-origin: top center;
+      }
+      .walk-leg.f1, .walk-leg.b2 {
+        animation: legStepA 0.32s ease-in-out infinite alternate;
+      }
+      .walk-leg.f2, .walk-leg.b1 {
+        animation: legStepB 0.32s ease-in-out infinite alternate;
+      }
+      @keyframes legStepA {
+        0% { transform: rotate(-20deg); }
+        100% { transform: rotate(20deg); }
+      }
+      @keyframes legStepB {
+        0% { transform: rotate(20deg); }
+        100% { transform: rotate(-20deg); }
+      }
+
+      .cat-legs-walk {
+        animation: catLegsActive 24s ease-in-out infinite;
+      }
+      @keyframes catLegsActive {
+        0%, 38.5% { opacity: 1; }
+        39%, 63.5% { opacity: 0; }
+        64%, 100% { opacity: 1; }
+      }
+
+      /* Sit pose & clicking paw */
+      .cat-sit-pose {
+        animation: catSitActive 24s ease-in-out infinite;
+      }
+      @keyframes catSitActive {
+        0%, 38.5% { opacity: 0; }
+        39%, 63.5% { opacity: 1; }
+        64%, 100% { opacity: 0; }
+      }
+
+      .cat-eyes-walk {
+        animation: catEyesWalkSync 24s ease-in-out infinite;
+      }
+      @keyframes catEyesWalkSync {
+        0%, 38.5% { opacity: 1; }
+        39%, 63.5% { opacity: 0; }
+        64%, 100% { opacity: 1; }
+      }
+
+      .cat-eyes-sit {
+        animation: catEyesSitSync 24s ease-in-out infinite;
+      }
+      @keyframes catEyesSitSync {
+        0%, 38.5% { opacity: 0; }
+        39%, 63.5% { opacity: 1; }
+        64%, 100% { opacity: 0; }
+      }
+
+      .cat-paw-clicker {
+        transform-origin: 0px 0px;
+        animation: pawClick 24s ease-in-out infinite;
+      }
+      @keyframes pawClick {
+        0%, 39.4% { transform: rotate(0deg); }
+        40.2% { transform: rotate(-35deg) translate(-2px, -3px); }
+        40.9% { transform: rotate(20deg) translate(8px, 4px); } /* CLICK TAP! */
+        41.6%, 63.5% { transform: rotate(0deg); }
+        64%, 100% { transform: rotate(0deg); }
+      }
+
+      /* Tail Wagging */
+      .cat-tail-wag {
+        transform-box: fill-box;
+        transform-origin: bottom right;
+        animation: tailWag 1.8s ease-in-out infinite alternate;
+      }
+      @keyframes tailWag {
+        0% { transform: rotate(-14deg); }
+        100% { transform: rotate(22deg); }
+      }
+
+      /* Click Ripple Effect on the Contribution Map */
+      .contrib-ripple {
+        transform-box: fill-box;
+        transform-origin: center center;
+        animation: ripplePulse 24s ease-out infinite;
+      }
+      @keyframes ripplePulse {
+        0%, 40.7% {
+          opacity: 0;
+          transform: scale(0.1);
+        }
+        40.9% {
+          opacity: 1;
+          transform: scale(0.4);
+        }
+        42% {
+          opacity: 0.95;
+          transform: scale(2.4);
+        }
+        44% {
+          opacity: 0;
+          transform: scale(4.0);
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .ripple-circle.r1 {
+        animation: ringPulse1 1.6s ease-out infinite;
+      }
+      .ripple-circle.r2 {
+        animation: ringPulse2 1.6s ease-out infinite 0.3s;
+      }
+      .ripple-circle.r3 {
+        animation: ringPulse3 1.6s ease-out infinite 0.6s;
+      }
+      @keyframes ringPulse1 {
+        0% { r: 3px; opacity: 1; }
+        100% { r: 24px; opacity: 0; }
+      }
+      @keyframes ringPulse2 {
+        0% { r: 3px; opacity: 0.9; }
+        100% { r: 19px; opacity: 0; }
+      }
+      @keyframes ringPulse3 {
+        0% { r: 3px; opacity: 0.8; }
+        100% { r: 15px; opacity: 0; }
+      }
+
+      .sparkle-burst {
+        animation: sparkleBurst 24s ease-out infinite;
+      }
+      @keyframes sparkleBurst {
+        0%, 40.7% { opacity: 0; transform: scale(0.2) rotate(0deg); }
+        41.0% { opacity: 1; transform: scale(1.4) rotate(45deg); }
+        42.2% { opacity: 0; transform: scale(2.2) rotate(90deg); }
+        100% { opacity: 0; }
+      }
+
+      /* Clicked Tile Flash Highlight */
+      .tile-flash {
+        animation: tileFlash 24s ease-in-out infinite;
+      }
+      @keyframes tileFlash {
+        0%, 40.7% {
+          opacity: 0;
+          transform: scale(1);
+        }
+        40.9% {
+          opacity: 1;
+          transform: scale(1.3);
+        }
+        41.5%, 62.5% {
+          opacity: 1;
+          transform: scale(1.12);
+        }
+        63.5%, 100% {
+          opacity: 0;
+          transform: scale(1);
+        }
+      }
+
+      /* Cat Speech Bubble Popup */
+      .cat-speech-bubble {
+        transform-box: fill-box;
+        transform-origin: 138px 36px;
+        animation: bubblePopup 24s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+      }
+      @keyframes bubblePopup {
+        0%, 40.8% {
+          opacity: 0;
+          transform: scale(0.3) translateY(16px);
+        }
+        41.5% {
+          opacity: 1;
+          transform: scale(1.08) translateY(-3px);
+        }
+        42.5%, 61.5% {
+          opacity: 1;
+          transform: scale(1.0) translateY(0);
+        }
+        63% {
+          opacity: 0;
+          transform: scale(0.7) translateY(8px);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+      }
+
+      .bubble-heart {
+        animation: heartPulse 2.2s ease-in-out infinite alternate;
+      }
+      @keyframes heartPulse {
+        0% { transform: translateY(0) scale(0.9); opacity: 0.7; }
+        100% { transform: translateY(-5px) scale(1.2); opacity: 1; }
+      }
+
+      .bubble-note {
+        animation: notePulse 2.4s ease-in-out infinite alternate 0.5s;
+      }
+      @keyframes notePulse {
+        0% { transform: translateY(0) scale(0.9); opacity: 0.6; }
+        100% { transform: translateY(-4px) scale(1.15); opacity: 1; }
+      }
+
+      /* Interactive Contact Cards (Clickable Links Leading to Socials) */
+      .contact-card-link {
+        cursor: pointer;
+        text-decoration: none;
+        outline: none;
+      }
+      .contact-card {
+        pointer-events: all;
+      }
+      .contact-card .card-bg {
+        transition: fill 0.22s ease, stroke 0.22s ease, stroke-width 0.22s ease;
+      }
+      .contact-card .card-title, .contact-card .card-handle {
+        transition: fill 0.22s ease;
+      }
+      .contact-card .card-arrow {
+        transition: opacity 0.22s ease;
+      }
+      .contact-card-link:hover .card-bg {
+        fill: ${isDark ? '#23253b' : '#ede2d5'} !important;
+        stroke: ${theme.accent} !important;
+        stroke-width: 1.5 !important;
+      }
+      .contact-card-link:hover .card-title {
+        fill: ${theme.accent} !important;
+      }
+      .contact-card-link:hover .card-handle {
+        fill: ${theme.text} !important;
+      }
+      .contact-card-link:hover .card-arrow {
+        opacity: 0.95 !important;
+      }
+      .contact-card-link:hover .card-arrow path {
+        stroke: ${theme.accent} !important;
+      }
+
       ${staggers}
     </style>
   `;
