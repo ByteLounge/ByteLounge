@@ -453,8 +453,8 @@ export function getStyles(theme, mode) {
         animation: tailWag 2s ease-in-out infinite alternate;
       }
       @keyframes tailWag {
-        0% { transform: rotate(-10deg); }
-        100% { transform: rotate(14deg); }
+        0% { transform: rotate(-8deg); }
+        100% { transform: rotate(12deg); }
       }
 
       /* Dynamic Heatmap Row Reveal on Cat Paws Tapping */
