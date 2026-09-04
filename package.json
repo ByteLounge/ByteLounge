@@ -1,0 +1,20 @@
+{
+  "name": "bytelounge-lofi-profile",
+  "version": "1.0.0",
+  "description": "Lofi Girl themed GitHub Profile README & animated dynamic poster cards",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/generate-cards.mjs",
+    "update": "node scripts/generate-cards.mjs"
+  },
+  "keywords": [
+    "github-profile",
+    "lofi",
+    "lofi-girl",
+    "svg",
+    "readme",
+    "portfolio"
+  ],
+  "author": "Yash Sanikop (ByteLounge)",
+  "license": "MIT"
+}

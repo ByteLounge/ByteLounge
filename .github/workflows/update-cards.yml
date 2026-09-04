@@ -1,0 +1,63 @@
+name: update cards
+
+on:
+  schedule:
+    # 00:30 UTC daily — 06:00 IST
+    - cron: "30 0 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/update-cards.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-cards
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate Lofi Girl profile cards
+        env:
+          # Optional: Personal Access Token (classic) with read:user and repo
+          # Falls back to standard GITHUB_TOKEN for public contributions
+          GH_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_LOGIN: ByteLounge
+          LEETCODE_USER: yashsanikop
+        run: node scripts/generate-cards.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add assets
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: refresh lofi girl profile cards"
+            git push
+            exit 0
+          fi
+
+          # Heartbeat check to prevent GitHub from disabling scheduled workflow
+          # after 60 days of quiet repo activity
+          age=$(( ( $(date -u +%s) - $(git log -1 --format=%ct) ) / 86400 ))
+          echo "assets unchanged; last commit ${age} day(s) ago"
+
+          if [ "$age" -ge 25 ]; then
+            mkdir -p .github
+            date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/last-run
+            git add .github/last-run
+            git commit -m "chore: heartbeat, keep lofi schedule armed"
+            git push
+          fi
