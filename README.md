@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/profile-dark.svg" />
-    <img alt="Yash Sanikop — Computer Science Engineer, IoT & Robotics Systems. Tech stack, GitHub contributions, problem solving stats and contact links in a cozy Lofi Girl aesthetic." src="assets/profile-light.svg" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-dark.svg" />
+    <img alt="Yash Sanikop — Computer Science Engineer, IoT & Robotics Systems. Tech stack, GitHub contributions, problem solving stats and contact links in a cozy Lofi Girl aesthetic." src="./assets/profile-light.svg" width="100%" />
   </picture>
 </p>
 

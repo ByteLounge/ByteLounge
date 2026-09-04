@@ -60,7 +60,7 @@ export function posterCard(data, mode = "dark") {
 
   // Outer frame & card background
   // Proportional height enclosing expanded calendar with zero overlap and zero empty space
-  const HEIGHT = 1218;
+  const HEIGHT = 1190;
   parts.push(rect({ x: 0, y: 0, width: WIDTH, height: HEIGHT, rx: 16, fill: theme.bg }));
   parts.push(rect({ x: 0, y: 0, width: WIDTH, height: HEIGHT, rx: 16, fill: `url(#${hazeGradId})` }));
   parts.push(rect({ x: 0.5, y: 0.5, width: WIDTH - 1, height: HEIGHT - 1, rx: 15.5, stroke: theme.border, strokeWidth: 1 }));

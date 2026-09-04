@@ -298,125 +298,60 @@ export function walkingCatAnimation(theme, stats, mode = "dark") {
   const bubbleBorder = isDark ? "#f6ad55" : "#c05621";
   const bubbleText = isDark ? "#f6ad55" : "#c05621";
 
-  // Tap target on Contribution Map header ledge
-  const tapX = 500;
-  const tapY = 675;
+  // Tap target on Contribution Map
+  const tapX = 511;
+  const tapY = 665;
 
-  // Speech bubble placement: sits cleanly above calendar (ZERO overlap with heatmap squares!)
-  const bubbleW = 286;
+  // Speech bubble placement: sits cleanly in header space above calendar (ZERO overlap with heatmap squares!)
+  const bubbleW = 290;
   const bubbleH = 32;
-  const bubbleX = 350;
-  const bubbleY = 608;
+  const bubbleX = 340;
+  const bubbleY = 548;
 
   return `
-    <!-- Walking Cat Adventure & Contribution Clicker -->
+    <!-- Walking Cat Adventure and Contribution Clicker -->
     <g class="cat-adventure">
       <!-- 1. Highlighted Contribution Tile on the Calendar Grid -->
-      <g class="clicked-tile" transform="translate(500, 688)">
-        <rect x="0" y="0" width="10" height="10" rx="2" fill="${theme.accent}" stroke="${theme.accent}" stroke-width="2" class="tile-flash">
-          <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 0; 1; 1; 0; 0" keyTimes="0; 0.51; 0.53; 0.67; 0.69; 1" />
-        </rect>
+      <g class="clicked-tile" transform="translate(506, 660)">
+        <rect x="0" y="0" width="10" height="10" rx="2" fill="${theme.accent}" stroke="${theme.accent}" stroke-width="2" class="tile-flash" />
       </g>
 
       <!-- 2. Click Ripple Effect on the Contribution Map -->
       <g class="contrib-ripple" transform="translate(${tapX}, ${tapY})">
-        <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent}" stroke-width="2.5" class="ripple-circle r1">
-          <animate attributeName="r" dur="22s" repeatCount="indefinite" values="3; 3; 26; 3" keyTimes="0; 0.51; 0.56; 1" />
-          <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 1; 0; 0" keyTimes="0; 0.51; 0.56; 1" />
-        </circle>
-        <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent2}" stroke-width="1.8" class="ripple-circle r2">
-          <animate attributeName="r" dur="22s" repeatCount="indefinite" values="3; 3; 20; 3" keyTimes="0; 0.52; 0.57; 1" />
-          <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 0.9; 0; 0" keyTimes="0; 0.52; 0.57; 1" />
-        </circle>
+        <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent}" stroke-width="2.5" class="ripple-circle r1" />
+        <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent2}" stroke-width="1.8" class="ripple-circle r2" />
         <!-- Sparkle bursts -->
         <g class="sparkle-burst">
-          <path d="M-8,-8 L-12,-12 M8,-8 L12,-12 M-8,8 L-12,12 M8,8 L12,12" stroke="${theme.accent}" stroke-width="1.5" stroke-linecap="round">
-            <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 0; 1; 0; 0" keyTimes="0; 0.51; 0.53; 0.56; 1" />
-          </path>
+          <path d="M-8,-8 L-12,-12 M8,-8 L12,-12 M-8,8 L-12,12 M8,8 L12,12" stroke="${theme.accent}" stroke-width="1.5" stroke-linecap="round" />
         </g>
       </g>
 
       <!-- 3. Speech / Pop-up Bubble when cat clicks (Positioned above calendar to avoid overlap) -->
       <g class="cat-speech-bubble" transform="translate(${bubbleX}, ${bubbleY})">
-        <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 0; 1; 1; 0; 0" keyTimes="0; 0.51; 0.53; 0.67; 0.69; 1" />
         <!-- Drop shadow -->
         <rect x="2" y="3" width="${bubbleW}" height="${bubbleH}" rx="${bubbleH / 2}" fill="rgba(0, 0, 0, 0.3)" />
         <!-- Main Bubble Pill -->
         <rect x="0" y="0" width="${bubbleW}" height="${bubbleH}" rx="${bubbleH / 2}" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.5" />
-        <!-- Pointer notch pointing down to tile -->
-        <polygon points="140,${bubbleH} 148,${bubbleH + 8} 156,${bubbleH}" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.5" />
-        <line x1="141" y1="${bubbleH - 0.5}" x2="155" y2="${bubbleH - 0.5}" stroke="${bubbleBg}" stroke-width="2.5" />
+        <!-- Pointer notch pointing down towards cat and tile -->
+        <polygon points="166,${bubbleH} 172,${bubbleH + 7} 178,${bubbleH}" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.5" />
+        <line x1="167" y1="${bubbleH - 0.5}" x2="177" y2="${bubbleH - 0.5}" stroke="${bubbleBg}" stroke-width="2.5" />
 
         <!-- Speech bubble text -->
         <text x="${bubbleW / 2}" y="20.5" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="${bubbleText}" text-anchor="middle" letter-spacing="0.2">
           🐾 Click! ${stats.total} contributions in the last year! ☕
         </text>
 
-        <!-- Floating hearts & music notes -->
+        <!-- Floating hearts and music notes -->
         <g class="bubble-floaters">
           <text x="${bubbleW - 20}" y="8" font-family="sans-serif" font-size="11" fill="#f472b6" class="bubble-heart">♥</text>
           <text x="18" y="8" font-family="sans-serif" font-size="10" fill="${theme.accent2}" class="bubble-note">♪</text>
         </g>
       </g>
 
-      <!-- 4. The Animated Travelling Cat (Dual SMIL + CSS motion for 100% browser support) -->
+      <!-- 4. The Animated Travelling Cat (100% CSS Keyframe powered) -->
       <g class="cat-traveller-mover">
-        <animateTransform
-          attributeName="transform"
-          type="translate"
-          dur="22s"
-          repeatCount="indefinite"
-          values="
-            620,190;
-            760,210;
-            810,360;
-            810,500;
-            700,550;
-            480,550;
-            260,550;
-            90,560;
-            80,640;
-            260,650;
-            460,650;
-            460,650;
-            320,780;
-            180,870;
-            90,960;
-            80,1045;
-            380,1045;
-            680,1045;
-            790,1090;
-            820,850;
-            810,500;
-            780,280;
-            620,190"
-          keyTimes="
-            0;
-            0.05;
-            0.10;
-            0.15;
-            0.20;
-            0.26;
-            0.32;
-            0.37;
-            0.42;
-            0.47;
-            0.52;
-            0.68;
-            0.73;
-            0.78;
-            0.82;
-            0.85;
-            0.89;
-            0.92;
-            0.94;
-            0.96;
-            0.98;
-            0.99;
-            1"
-        />
-        <g class="cat-traveller" transform="scale(1.2)">
-          <g class="cat-body-group">
+        <g class="cat-facer">
+          <g class="cat-body-group" transform="scale(1.2)">
             <!-- Walking Leg Cycles (Active while moving) -->
             <g class="cat-legs-walk">
               <g class="walk-leg f1" transform="translate(24, 18)">

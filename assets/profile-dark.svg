@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="880" height="1218" viewBox="0 0 880 1218" fill="none" role="img" aria-label="Yash Sanikop — lofi profile poster"><title>Yash Sanikop — lofi profile poster</title>
-    <style>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="880" height="1190" viewBox="0 0 880 1190" fill="none" role="img" aria-label="Yash Sanikop — lofi profile poster"><title>Yash Sanikop — lofi profile poster</title>
+    <style><![CDATA[
       /* Entrance animation cascade */
       .rise {
         animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -139,9 +139,54 @@
         100% { opacity: 0.85; }
       }
 
-      /* ---------------- Walking Cat Adventure & Contribution Clicker ---------------- */
-      .cat-traveller {
-        transform-origin: 20px 15px;
+      /* ---------------- Walking Cat Adventure and Contribution Clicker ---------------- */
+      .cat-traveller-mover {
+        animation: catWalkJourney 24s ease-in-out infinite;
+      }
+      @keyframes catWalkJourney {
+        /* 1. Start at desk cushion */
+        0% { transform: translate(620px, 185px); }
+        4% { transform: translate(740px, 205px); }
+        /* 2. Walk down right border */
+        8% { transform: translate(800px, 320px); }
+        12% { transform: translate(800px, 460px); }
+        /* 3. Walk left across activity section */
+        16% { transform: translate(640px, 510px); }
+        22% { transform: translate(380px, 510px); }
+        28% { transform: translate(120px, 520px); }
+        /* 4. Descend to contribution map header */
+        33% { transform: translate(80px, 600px); }
+        38% { transform: translate(260px, 620px); }
+        43% { transform: translate(430px, 635px); }
+        /* 5. Sits right next to contribution tile at (504, 660) */
+        47%, 66% { transform: translate(470px, 640px); }
+        /* 6. Descend into Problem Solving section */
+        70% { transform: translate(280px, 740px); }
+        75% { transform: translate(90px, 860px); }
+        /* 7. Walk down into Socials and Connect section */
+        80% { transform: translate(80px, 980px); }
+        84% { transform: translate(380px, 1030px); }
+        88% { transform: translate(680px, 1030px); }
+        /* 8. Near cozy footer */
+        92% { transform: translate(770px, 1060px); }
+        /* 9. Ascend along right edge back up to desk */
+        95% { transform: translate(810px, 700px); }
+        98% { transform: translate(780px, 300px); }
+        100% { transform: translate(620px, 185px); }
+      }
+
+      /* Horizontal Facing direction (flips around cat local center 20px, 14px) */
+      .cat-facer {
+        transform-origin: 20px 14px;
+        animation: catFacerFlip 24s ease-in-out infinite;
+      }
+      @keyframes catFacerFlip {
+        0%, 14% { transform: scaleX(1); }
+        15%, 31% { transform: scaleX(-1); }
+        32%, 68% { transform: scaleX(1); }
+        69%, 82% { transform: scaleX(-1); }
+        83%, 93% { transform: scaleX(1); }
+        94%, 100% { transform: scaleX(-1); }
       }
 
       /* Leg Walk Cycles */
@@ -164,52 +209,52 @@
       }
 
       .cat-legs-walk {
-        animation: catLegsActive 22s ease-in-out infinite;
+        animation: catLegsActive 24s ease-in-out infinite;
       }
       @keyframes catLegsActive {
-        0%, 50% { opacity: 1; }
-        51%, 67% { opacity: 0; }
-        68%, 100% { opacity: 1; }
+        0%, 48% { opacity: 1; }
+        49%, 66% { opacity: 0; }
+        67%, 100% { opacity: 1; }
       }
 
-      /* Sit pose & clicking paw */
+      /* Sit pose and clicking paw */
       .cat-sit-pose {
-        animation: catSitActive 22s ease-in-out infinite;
+        animation: catSitActive 24s ease-in-out infinite;
       }
       @keyframes catSitActive {
-        0%, 50% { opacity: 0; }
-        51%, 67% { opacity: 1; }
-        68%, 100% { opacity: 0; }
+        0%, 48% { opacity: 0; }
+        49%, 66% { opacity: 1; }
+        67%, 100% { opacity: 0; }
       }
 
       .cat-eyes-walk {
-        animation: catEyesWalkSync 22s ease-in-out infinite;
+        animation: catEyesWalkSync 24s ease-in-out infinite;
       }
       @keyframes catEyesWalkSync {
-        0%, 50% { opacity: 1; }
-        51%, 67% { opacity: 0; }
-        68%, 100% { opacity: 1; }
+        0%, 48% { opacity: 1; }
+        49%, 66% { opacity: 0; }
+        67%, 100% { opacity: 1; }
       }
 
       .cat-eyes-sit {
-        animation: catEyesSitSync 22s ease-in-out infinite;
+        animation: catEyesSitSync 24s ease-in-out infinite;
       }
       @keyframes catEyesSitSync {
-        0%, 50% { opacity: 0; }
-        51%, 67% { opacity: 1; }
-        68%, 100% { opacity: 0; }
+        0%, 48% { opacity: 0; }
+        49%, 66% { opacity: 1; }
+        67%, 100% { opacity: 0; }
       }
 
       .cat-paw-clicker {
         transform-origin: 0px 0px;
-        animation: pawClick 22s ease-in-out infinite;
+        animation: pawClick 24s ease-in-out infinite;
       }
       @keyframes pawClick {
-        0%, 50.5% { transform: rotate(0deg); }
-        51.2% { transform: rotate(-35deg) translate(-2px, -3px); }
-        52.0% { transform: rotate(20deg) translate(8px, 4px); } /* TAP MAP! */
-        52.8%, 67% { transform: rotate(0deg); }
-        68%, 100% { transform: rotate(0deg); }
+        0%, 49.5% { transform: rotate(0deg); }
+        50.5% { transform: rotate(-35deg) translate(-2px, -3px); }
+        51.5% { transform: rotate(20deg) translate(8px, 4px); } /* TAP MAP! */
+        53.0%, 66% { transform: rotate(0deg); }
+        67%, 100% { transform: rotate(0deg); }
       }
 
       /* Tail Wagging */
@@ -225,53 +270,61 @@
       /* Click Ripple Effect on the Contribution Map */
       .contrib-ripple {
         transform-origin: center center;
+        animation: rippleContainer 24s ease-out infinite;
+      }
+      @keyframes rippleContainer {
+        0%, 50.8% { opacity: 0; transform: scale(0.2); }
+        51.5% { opacity: 1; transform: scale(0.6); }
+        53.5% { opacity: 0.8; transform: scale(1.8); }
+        55.5% { opacity: 0; transform: scale(3.2); }
+        100% { opacity: 0; }
       }
 
       .ripple-circle.r1 {
-        animation: ringPulse1 1.6s ease-out infinite;
+        animation: ringPulse1 1.4s ease-out infinite;
       }
       .ripple-circle.r2 {
-        animation: ringPulse2 1.6s ease-out infinite 0.3s;
+        animation: ringPulse2 1.4s ease-out infinite 0.3s;
       }
       @keyframes ringPulse1 {
         0% { r: 3px; opacity: 1; }
-        100% { r: 26px; opacity: 0; }
+        100% { r: 24px; opacity: 0; }
       }
       @keyframes ringPulse2 {
         0% { r: 3px; opacity: 0.9; }
-        100% { r: 20px; opacity: 0; }
+        100% { r: 18px; opacity: 0; }
       }
 
       /* Clicked Tile Flash Highlight */
       .tile-flash {
-        animation: tileFlash 22s ease-in-out infinite;
+        animation: tileFlash 24s ease-in-out infinite;
       }
       @keyframes tileFlash {
-        0%, 50.5% { opacity: 0; transform: scale(1); }
-        51% { opacity: 1; transform: scale(1.3); }
-        52%, 66.5% { opacity: 1; transform: scale(1.15); }
-        67.5%, 100% { opacity: 0; transform: scale(1); }
+        0%, 50.8% { opacity: 0; transform: scale(1); }
+        51.5% { opacity: 1; transform: scale(1.35); }
+        52.5%, 65% { opacity: 1; transform: scale(1.15); }
+        66%, 100% { opacity: 0; transform: scale(1); }
       }
 
       /* Cat Speech Bubble Popup */
       .cat-speech-bubble {
-        transform-origin: 148px 36px;
-        animation: bubblePopup 22s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+        transform-origin: 150px 30px;
+        animation: bubblePopup 24s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
       }
       @keyframes bubblePopup {
         0%, 50.8% {
           opacity: 0;
-          transform: scale(0.3) translateY(16px);
+          transform: scale(0.3) translateY(14px);
         }
-        51.6% {
+        51.8% {
           opacity: 1;
-          transform: scale(1.08) translateY(-3px);
+          transform: scale(1.06) translateY(-2px);
         }
-        52.5%, 66.5% {
+        52.8%, 64.5% {
           opacity: 1;
           transform: scale(1.0) translateY(0);
         }
-        67.5% {
+        66% {
           opacity: 0;
           transform: scale(0.7) translateY(8px);
         }
@@ -404,7 +457,7 @@
 .d69 { animation-delay: 1.035s; }
 .d70 { animation-delay: 1.050s; }
 
-    </style>
+    ]]></style>
   
     <defs>
       <radialGradient id="haze-dark" cx="85%" cy="8%" r="65%">
@@ -413,7 +466,7 @@
         <stop offset="100%" stop-color="#0f1016" stop-opacity="0" />
       </radialGradient>
     </defs>
-  <rect x="0" y="0" width="880" height="1218" rx="16" fill="#0f1016" /><rect x="0" y="0" width="880" height="1218" rx="16" fill="url(#haze-dark)" /><rect x="0.5" y="0.5" width="879" height="1217" rx="15.5" fill="none" stroke="#26283b" stroke-width="1" /><text x="34" y="46" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="10" font-weight="600" fill="#b794f4" text-anchor="start" letter-spacing="1.8" class="rise d1">放課後勉強中  ·  STUDYING &#38; BUILDING</text><text x="34" y="76" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="700" fill="#f7fafc" text-anchor="start" class="rise d2">yash sanikop</text><text x="34" y="100" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="500" fill="#8e94a8" text-anchor="start" letter-spacing="0.5" class="rise d4">computer science &#38; engineering  ·  iot, robotics &#38; ai systems</text><text x="34" y="120" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#8e94a8" text-anchor="start" class="rise d6">agnel institute of technology and design, goa  ·  goa, india</text><text x="34" y="138" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="10.5" font-weight="500" fill="#f6ad55" text-anchor="start" class="rise d8">☕ 2,480+ study sessions logged  ·  listening to lo-fi beats</text>
+  <rect x="0" y="0" width="880" height="1190" rx="16" fill="#0f1016" /><rect x="0" y="0" width="880" height="1190" rx="16" fill="url(#haze-dark)" /><rect x="0.5" y="0.5" width="879" height="1189" rx="15.5" fill="none" stroke="#26283b" stroke-width="1" /><text x="34" y="46" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="10" font-weight="600" fill="#b794f4" text-anchor="start" letter-spacing="1.8" class="rise d1">放課後勉強中  ·  STUDYING &#38; BUILDING</text><text x="34" y="76" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="700" fill="#f7fafc" text-anchor="start" class="rise d2">yash sanikop</text><text x="34" y="100" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="500" fill="#8e94a8" text-anchor="start" letter-spacing="0.5" class="rise d4">computer science &#38; engineering  ·  iot, robotics &#38; ai systems</text><text x="34" y="120" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#8e94a8" text-anchor="start" class="rise d6">agnel institute of technology and design, goa  ·  goa, india</text><text x="34" y="138" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="10.5" font-weight="500" fill="#f6ad55" text-anchor="start" class="rise d8">☕ 2,480+ study sessions logged  ·  listening to lo-fi beats</text>
     <g transform="translate(34, 160)">
       <g class="lofi-player fade d12">
         <!-- Player pill frame -->
@@ -743,114 +796,49 @@
         </g>
       </a>
     <text x="440" y="1182" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="10.5" font-weight="500" fill="#8e94a8" text-anchor="middle" class="rise d68">“stay cozy, keep coding, let the beats play.”  ☕ ♪</text>
-    <!-- Walking Cat Adventure & Contribution Clicker -->
+    <!-- Walking Cat Adventure and Contribution Clicker -->
     <g class="cat-adventure">
       <!-- 1. Highlighted Contribution Tile on the Calendar Grid -->
-      <g class="clicked-tile" transform="translate(500, 688)">
-        <rect x="0" y="0" width="10" height="10" rx="2" fill="#f6ad55" stroke="#f6ad55" stroke-width="2" class="tile-flash">
-          <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 0; 1; 1; 0; 0" keyTimes="0; 0.51; 0.53; 0.67; 0.69; 1" />
-        </rect>
+      <g class="clicked-tile" transform="translate(506, 660)">
+        <rect x="0" y="0" width="10" height="10" rx="2" fill="#f6ad55" stroke="#f6ad55" stroke-width="2" class="tile-flash" />
       </g>
 
       <!-- 2. Click Ripple Effect on the Contribution Map -->
-      <g class="contrib-ripple" transform="translate(500, 675)">
-        <circle cx="0" cy="0" r="3" fill="none" stroke="#f6ad55" stroke-width="2.5" class="ripple-circle r1">
-          <animate attributeName="r" dur="22s" repeatCount="indefinite" values="3; 3; 26; 3" keyTimes="0; 0.51; 0.56; 1" />
-          <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 1; 0; 0" keyTimes="0; 0.51; 0.56; 1" />
-        </circle>
-        <circle cx="0" cy="0" r="3" fill="none" stroke="#b794f4" stroke-width="1.8" class="ripple-circle r2">
-          <animate attributeName="r" dur="22s" repeatCount="indefinite" values="3; 3; 20; 3" keyTimes="0; 0.52; 0.57; 1" />
-          <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 0.9; 0; 0" keyTimes="0; 0.52; 0.57; 1" />
-        </circle>
+      <g class="contrib-ripple" transform="translate(511, 665)">
+        <circle cx="0" cy="0" r="3" fill="none" stroke="#f6ad55" stroke-width="2.5" class="ripple-circle r1" />
+        <circle cx="0" cy="0" r="3" fill="none" stroke="#b794f4" stroke-width="1.8" class="ripple-circle r2" />
         <!-- Sparkle bursts -->
         <g class="sparkle-burst">
-          <path d="M-8,-8 L-12,-12 M8,-8 L12,-12 M-8,8 L-12,12 M8,8 L12,12" stroke="#f6ad55" stroke-width="1.5" stroke-linecap="round">
-            <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 0; 1; 0; 0" keyTimes="0; 0.51; 0.53; 0.56; 1" />
-          </path>
+          <path d="M-8,-8 L-12,-12 M8,-8 L12,-12 M-8,8 L-12,12 M8,8 L12,12" stroke="#f6ad55" stroke-width="1.5" stroke-linecap="round" />
         </g>
       </g>
 
       <!-- 3. Speech / Pop-up Bubble when cat clicks (Positioned above calendar to avoid overlap) -->
-      <g class="cat-speech-bubble" transform="translate(350, 608)">
-        <animate attributeName="opacity" dur="22s" repeatCount="indefinite" values="0; 0; 1; 1; 0; 0" keyTimes="0; 0.51; 0.53; 0.67; 0.69; 1" />
+      <g class="cat-speech-bubble" transform="translate(340, 548)">
         <!-- Drop shadow -->
-        <rect x="2" y="3" width="286" height="32" rx="16" fill="rgba(0, 0, 0, 0.3)" />
+        <rect x="2" y="3" width="290" height="32" rx="16" fill="rgba(0, 0, 0, 0.3)" />
         <!-- Main Bubble Pill -->
-        <rect x="0" y="0" width="286" height="32" rx="16" fill="#161726" stroke="#f6ad55" stroke-width="1.5" />
-        <!-- Pointer notch pointing down to tile -->
-        <polygon points="140,32 148,40 156,32" fill="#161726" stroke="#f6ad55" stroke-width="1.5" />
-        <line x1="141" y1="31.5" x2="155" y2="31.5" stroke="#161726" stroke-width="2.5" />
+        <rect x="0" y="0" width="290" height="32" rx="16" fill="#161726" stroke="#f6ad55" stroke-width="1.5" />
+        <!-- Pointer notch pointing down towards cat and tile -->
+        <polygon points="166,32 172,39 178,32" fill="#161726" stroke="#f6ad55" stroke-width="1.5" />
+        <line x1="167" y1="31.5" x2="177" y2="31.5" stroke="#161726" stroke-width="2.5" />
 
         <!-- Speech bubble text -->
-        <text x="143" y="20.5" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="#f6ad55" text-anchor="middle" letter-spacing="0.2">
+        <text x="145" y="20.5" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="#f6ad55" text-anchor="middle" letter-spacing="0.2">
           🐾 Click! 490 contributions in the last year! ☕
         </text>
 
-        <!-- Floating hearts & music notes -->
+        <!-- Floating hearts and music notes -->
         <g class="bubble-floaters">
-          <text x="266" y="8" font-family="sans-serif" font-size="11" fill="#f472b6" class="bubble-heart">♥</text>
+          <text x="270" y="8" font-family="sans-serif" font-size="11" fill="#f472b6" class="bubble-heart">♥</text>
           <text x="18" y="8" font-family="sans-serif" font-size="10" fill="#b794f4" class="bubble-note">♪</text>
         </g>
       </g>
 
-      <!-- 4. The Animated Travelling Cat (Dual SMIL + CSS motion for 100% browser support) -->
+      <!-- 4. The Animated Travelling Cat (100% CSS Keyframe powered) -->
       <g class="cat-traveller-mover">
-        <animateTransform
-          attributeName="transform"
-          type="translate"
-          dur="22s"
-          repeatCount="indefinite"
-          values="
-            620,190;
-            760,210;
-            810,360;
-            810,500;
-            700,550;
-            480,550;
-            260,550;
-            90,560;
-            80,640;
-            260,650;
-            460,650;
-            460,650;
-            320,780;
-            180,870;
-            90,960;
-            80,1045;
-            380,1045;
-            680,1045;
-            790,1090;
-            820,850;
-            810,500;
-            780,280;
-            620,190"
-          keyTimes="
-            0;
-            0.05;
-            0.10;
-            0.15;
-            0.20;
-            0.26;
-            0.32;
-            0.37;
-            0.42;
-            0.47;
-            0.52;
-            0.68;
-            0.73;
-            0.78;
-            0.82;
-            0.85;
-            0.89;
-            0.92;
-            0.94;
-            0.96;
-            0.98;
-            0.99;
-            1"
-        />
-        <g class="cat-traveller" transform="scale(1.2)">
-          <g class="cat-body-group">
+        <g class="cat-facer">
+          <g class="cat-body-group" transform="scale(1.2)">
             <!-- Walking Leg Cycles (Active while moving) -->
             <g class="cat-legs-walk">
               <g class="walk-leg f1" transform="translate(24, 18)">
