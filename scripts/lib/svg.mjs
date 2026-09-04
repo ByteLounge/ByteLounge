@@ -240,20 +240,22 @@ export function getStyles(theme, mode) {
         40% { transform: translate(620px, 505px); }
         43% { transform: translate(380px, 505px); }
         46% { transform: translate(120px, 515px); }
-        /* 6. Step down to contribution map */
-        48% { transform: translate(80px, 595px); }
-        50% { transform: translate(250px, 638px); } /* Tap 1: Week 17 */
-        51.8% { transform: translate(250px, 638px); }
-        /* 7. Steps across the 4 contribution clusters, tapping each */
-        53.0% { transform: translate(390px, 638px); } /* Tap 2: Week 27 */
-        54.8% { transform: translate(390px, 638px); }
-        56.0% { transform: translate(530px, 638px); } /* Tap 3: Week 37 */
-        57.8% { transform: translate(530px, 638px); }
-        59.0% { transform: translate(670px, 638px); } /* Tap 4: Week 47 */
-        66.5% { transform: translate(670px, 638px); } /* Sits admiring all contributions */
+        /* 6. Step down to contribution map entrance */
+        48% { transform: translate(100px, 600px); }
+        49.5% { transform: translate(200px, 663px); }
+        /* 7. Steps across the 7 rows of the heatmap, tapping one tile on each line */
+        50.4%, 51.4% { transform: translate(325px, 663px); } /* Tap Row 0 (Sun): tile (360, 690) */
+        52.4%, 53.4% { transform: translate(481px, 677px); } /* Tap Row 1 (Mon): tile (516.2, 704.2) */
+        54.4%, 55.4% { transform: translate(524px, 691px); } /* Tap Row 2 (Tue): tile (558.8, 718.4) */
+        56.4%, 57.4% { transform: translate(666px, 705px); } /* Tap Row 3 (Wed): tile (700.8, 732.6) */
+        58.4%, 59.4% { transform: translate(708px, 720px); } /* Tap Row 4 (Thu): tile (743.4, 746.8) */
+        60.4%, 61.4% { transform: translate(680px, 734px); } /* Tap Row 5 (Fri): tile (715.0, 761.0) */
+        62.4%, 63.4% { transform: translate(666px, 748px); } /* Tap Row 6 (Sat): tile (700.8, 775.2) */
+        /* Sits admiring all 490 contributions! */
+        64.0%, 67.0% { transform: translate(666px, 748px); }
         /* 8. Step down into Problem Solving section */
-        70% { transform: translate(450px, 750px); }
-        74% { transform: translate(160px, 790px); }
+        69% { transform: translate(480px, 830px); }
+        73% { transform: translate(160px, 850px); }
         /* 9. Walk down and stroll along the bottom quote */
         78% { transform: translate(120px, 945px); }
         82% { transform: translate(430px, 945px); }
@@ -352,15 +354,21 @@ export function getStyles(theme, mode) {
         animation: catLegsActive 28s ease-in-out infinite;
       }
       @keyframes catLegsActive {
-        0%, 50.0% { opacity: 1; visibility: visible; }
-        50.3%, 52.0% { opacity: 0; visibility: hidden; }
-        52.3%, 53.0% { opacity: 1; visibility: visible; }
-        53.3%, 55.0% { opacity: 0; visibility: hidden; }
-        55.3%, 56.0% { opacity: 1; visibility: visible; }
-        56.3%, 58.0% { opacity: 0; visibility: hidden; }
-        58.3%, 59.0% { opacity: 1; visibility: visible; }
-        59.3%, 66.5% { opacity: 0; visibility: hidden; }
-        66.8%, 100% { opacity: 1; visibility: visible; }
+        0%, 50.2% { opacity: 1; visibility: visible; }
+        50.4%, 51.4% { opacity: 0; visibility: hidden; }
+        51.6%, 52.2% { opacity: 1; visibility: visible; }
+        52.4%, 53.4% { opacity: 0; visibility: hidden; }
+        53.6%, 54.2% { opacity: 1; visibility: visible; }
+        54.4%, 55.4% { opacity: 0; visibility: hidden; }
+        55.6%, 56.2% { opacity: 1; visibility: visible; }
+        56.4%, 57.4% { opacity: 0; visibility: hidden; }
+        57.6%, 58.2% { opacity: 1; visibility: visible; }
+        58.4%, 59.4% { opacity: 0; visibility: hidden; }
+        59.6%, 60.2% { opacity: 1; visibility: visible; }
+        60.4%, 61.4% { opacity: 0; visibility: hidden; }
+        61.6%, 62.2% { opacity: 1; visibility: visible; }
+        62.4%, 67.0% { opacity: 0; visibility: hidden; }
+        67.2%, 100% { opacity: 1; visibility: visible; }
       }
 
       /* Sit pose and clicking paw */
@@ -368,110 +376,203 @@ export function getStyles(theme, mode) {
         animation: catSitActive 28s ease-in-out infinite;
       }
       @keyframes catSitActive {
-        0%, 50.0% { opacity: 0; visibility: hidden; }
-        50.3%, 52.0% { opacity: 1; visibility: visible; }
-        52.3%, 53.0% { opacity: 0; visibility: hidden; }
-        53.3%, 55.0% { opacity: 1; visibility: visible; }
-        55.3%, 56.0% { opacity: 0; visibility: hidden; }
-        56.3%, 58.0% { opacity: 1; visibility: visible; }
-        58.3%, 59.0% { opacity: 0; visibility: hidden; }
-        59.3%, 66.5% { opacity: 1; visibility: visible; }
-        66.8%, 100% { opacity: 0; visibility: hidden; }
+        0%, 50.2% { opacity: 0; visibility: hidden; }
+        50.4%, 51.4% { opacity: 1; visibility: visible; }
+        51.6%, 52.2% { opacity: 0; visibility: hidden; }
+        52.4%, 53.4% { opacity: 1; visibility: visible; }
+        53.6%, 54.2% { opacity: 0; visibility: hidden; }
+        54.4%, 55.4% { opacity: 1; visibility: visible; }
+        55.6%, 56.2% { opacity: 0; visibility: hidden; }
+        56.4%, 57.4% { opacity: 1; visibility: visible; }
+        57.6%, 58.2% { opacity: 0; visibility: hidden; }
+        58.4%, 59.4% { opacity: 1; visibility: visible; }
+        59.6%, 60.2% { opacity: 0; visibility: hidden; }
+        60.4%, 61.4% { opacity: 1; visibility: visible; }
+        61.6%, 62.2% { opacity: 0; visibility: hidden; }
+        62.4%, 67.0% { opacity: 1; visibility: visible; }
+        67.2%, 100% { opacity: 0; visibility: hidden; }
       }
 
       .cat-eyes-walk {
         animation: catEyesWalkSync 28s ease-in-out infinite;
       }
       @keyframes catEyesWalkSync {
-        0%, 50.0% { opacity: 1; visibility: visible; }
-        50.3%, 66.5% { opacity: 0; visibility: hidden; }
-        66.8%, 100% { opacity: 1; visibility: visible; }
+        0%, 50.2% { opacity: 1; visibility: visible; }
+        50.4%, 67.0% { opacity: 0; visibility: hidden; }
+        67.2%, 100% { opacity: 1; visibility: visible; }
       }
 
       .cat-eyes-sit {
         animation: catEyesSitSync 28s ease-in-out infinite;
       }
       @keyframes catEyesSitSync {
-        0%, 50.0% { opacity: 0; visibility: hidden; }
-        50.3%, 66.5% { opacity: 1; visibility: visible; }
-        66.8%, 100% { opacity: 0; visibility: hidden; }
+        0%, 50.2% { opacity: 0; visibility: hidden; }
+        50.4%, 67.0% { opacity: 1; visibility: visible; }
+        67.2%, 100% { opacity: 0; visibility: hidden; }
       }
 
-      /* Paw clicker anchored permanently at shoulder joint 0 0 (no translate offset) */
+      /* Paw clicker anchored permanently at shoulder joint 0 0 */
       .cat-paw-clicker {
         transform-origin: 0px 0px;
         animation: pawMultiClick 28s ease-in-out infinite;
       }
       @keyframes pawMultiClick {
-        0%, 50.4% { transform: rotate(0deg); }
-        50.9% { transform: rotate(-30deg); } /* raise paw */
-        51.4% { transform: rotate(18deg); }  /* tap tile 1 */
-        52.0% { transform: rotate(0deg); }
-        53.4% { transform: rotate(-30deg); } /* raise paw */
-        54.0% { transform: rotate(18deg); }  /* tap tile 2 */
-        54.8% { transform: rotate(0deg); }
-        56.4% { transform: rotate(-30deg); } /* raise paw */
-        57.0% { transform: rotate(18deg); }  /* tap tile 3 */
-        57.8% { transform: rotate(0deg); }
-        59.4% { transform: rotate(-30deg); } /* raise paw */
-        60.0% { transform: rotate(18deg); }  /* tap tile 4 */
-        60.8%, 100% { transform: rotate(0deg); }
+        0%, 50.2% { transform: rotate(0deg); }
+        50.5% { transform: rotate(-30deg); }
+        50.8% { transform: rotate(18deg); }  /* tap row 0 */
+        51.2% { transform: rotate(0deg); }
+
+        52.5% { transform: rotate(-30deg); }
+        52.8% { transform: rotate(18deg); }  /* tap row 1 */
+        53.2% { transform: rotate(0deg); }
+
+        54.5% { transform: rotate(-30deg); }
+        54.8% { transform: rotate(18deg); }  /* tap row 2 */
+        55.2% { transform: rotate(0deg); }
+
+        56.5% { transform: rotate(-30deg); }
+        56.8% { transform: rotate(18deg); }  /* tap row 3 */
+        57.2% { transform: rotate(0deg); }
+
+        58.5% { transform: rotate(-30deg); }
+        58.8% { transform: rotate(18deg); }  /* tap row 4 */
+        59.2% { transform: rotate(0deg); }
+
+        60.5% { transform: rotate(-30deg); }
+        60.8% { transform: rotate(18deg); }  /* tap row 5 */
+        61.2% { transform: rotate(0deg); }
+
+        62.5% { transform: rotate(-30deg); }
+        62.8% { transform: rotate(18deg); }  /* tap row 6 */
+        63.2%, 100% { transform: rotate(0deg); }
       }
 
-      /* Tail Wagging: anchored permanently at body junction (5px 14px) */
+      /* Tail Wagging: anchored permanently at body joint (0 0 inside translate(10, 14)) */
       .cat-tail-group {
-        transform-origin: 5px 14px;
-        animation: tailWag 1.8s ease-in-out infinite alternate;
+        transform-origin: 0px 0px;
+        animation: tailWag 2s ease-in-out infinite alternate;
       }
       @keyframes tailWag {
         0% { transform: rotate(-10deg); }
-        100% { transform: rotate(16deg); }
+        100% { transform: rotate(14deg); }
       }
 
-      /* Ripple Animations for each tapped contribution cluster */
+      /* Dynamic Heatmap Row Reveal on Cat Paws Tapping */
+      .contrib-cell {
+        transform-box: fill-box;
+        transform-origin: center center;
+      }
+      .contrib-cell.row-0 { animation: rowReveal0 28s ease-in-out infinite; }
+      .contrib-cell.row-1 { animation: rowReveal1 28s ease-in-out infinite; }
+      .contrib-cell.row-2 { animation: rowReveal2 28s ease-in-out infinite; }
+      .contrib-cell.row-3 { animation: rowReveal3 28s ease-in-out infinite; }
+      .contrib-cell.row-4 { animation: rowReveal4 28s ease-in-out infinite; }
+      .contrib-cell.row-5 { animation: rowReveal5 28s ease-in-out infinite; }
+      .contrib-cell.row-6 { animation: rowReveal6 28s ease-in-out infinite; }
+
+      @keyframes rowReveal0 {
+        0%, 26.0% { opacity: 1; transform: scale(1); }
+        27.0%, 50.4% { opacity: 0; transform: scale(0.2); }
+        50.8% { opacity: 1; transform: scale(1.3); }
+        51.4%, 100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes rowReveal1 {
+        0%, 26.0% { opacity: 1; transform: scale(1); }
+        27.0%, 52.4% { opacity: 0; transform: scale(0.2); }
+        52.8% { opacity: 1; transform: scale(1.3); }
+        53.4%, 100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes rowReveal2 {
+        0%, 26.0% { opacity: 1; transform: scale(1); }
+        27.0%, 54.4% { opacity: 0; transform: scale(0.2); }
+        54.8% { opacity: 1; transform: scale(1.3); }
+        55.4%, 100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes rowReveal3 {
+        0%, 26.0% { opacity: 1; transform: scale(1); }
+        27.0%, 56.4% { opacity: 0; transform: scale(0.2); }
+        56.8% { opacity: 1; transform: scale(1.3); }
+        57.4%, 100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes rowReveal4 {
+        0%, 26.0% { opacity: 1; transform: scale(1); }
+        27.0%, 58.4% { opacity: 0; transform: scale(0.2); }
+        58.8% { opacity: 1; transform: scale(1.3); }
+        59.4%, 100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes rowReveal5 {
+        0%, 26.0% { opacity: 1; transform: scale(1); }
+        27.0%, 60.4% { opacity: 0; transform: scale(0.2); }
+        60.8% { opacity: 1; transform: scale(1.3); }
+        61.4%, 100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes rowReveal6 {
+        0%, 26.0% { opacity: 1; transform: scale(1); }
+        27.0%, 62.4% { opacity: 0; transform: scale(0.2); }
+        62.8% { opacity: 1; transform: scale(1.3); }
+        63.4%, 100% { opacity: 1; transform: scale(1); }
+      }
+
+      /* Ripple Animations for each tapped row */
       .contrib-ripple {
         transform-origin: 0px 0px;
         opacity: 0;
       }
-      .contrib-ripple.r1 {
-        animation: rippleAnim1 28s ease-out infinite;
-      }
-      .contrib-ripple.r2 {
-        animation: rippleAnim2 28s ease-out infinite;
-      }
-      .contrib-ripple.r3 {
-        animation: rippleAnim3 28s ease-out infinite;
-      }
-      .contrib-ripple.r4 {
-        animation: rippleAnim4 28s ease-out infinite;
-      }
+      .contrib-ripple.r0 { animation: rippleAnim0 28s ease-out infinite; }
+      .contrib-ripple.r1 { animation: rippleAnim1 28s ease-out infinite; }
+      .contrib-ripple.r2 { animation: rippleAnim2 28s ease-out infinite; }
+      .contrib-ripple.r3 { animation: rippleAnim3 28s ease-out infinite; }
+      .contrib-ripple.r4 { animation: rippleAnim4 28s ease-out infinite; }
+      .contrib-ripple.r5 { animation: rippleAnim5 28s ease-out infinite; }
+      .contrib-ripple.r6 { animation: rippleAnim6 28s ease-out infinite; }
 
+      @keyframes rippleAnim0 {
+        0%, 50.4% { opacity: 0; transform: scale(0.2); }
+        50.8% { opacity: 1; transform: scale(0.6); }
+        51.6% { opacity: 0.8; transform: scale(1.8); }
+        52.4% { opacity: 0; transform: scale(3.2); }
+        100% { opacity: 0; }
+      }
       @keyframes rippleAnim1 {
-        0%, 51.0% { opacity: 0; transform: scale(0.2); }
-        51.4% { opacity: 1; transform: scale(0.6); }
-        52.4% { opacity: 0.8; transform: scale(1.8); }
-        53.4% { opacity: 0; transform: scale(3.2); }
+        0%, 52.4% { opacity: 0; transform: scale(0.2); }
+        52.8% { opacity: 1; transform: scale(0.6); }
+        53.6% { opacity: 0.8; transform: scale(1.8); }
+        54.4% { opacity: 0; transform: scale(3.2); }
         100% { opacity: 0; }
       }
       @keyframes rippleAnim2 {
-        0%, 53.6% { opacity: 0; transform: scale(0.2); }
-        54.0% { opacity: 1; transform: scale(0.6); }
-        55.0% { opacity: 0.8; transform: scale(1.8); }
-        56.0% { opacity: 0; transform: scale(3.2); }
+        0%, 54.4% { opacity: 0; transform: scale(0.2); }
+        54.8% { opacity: 1; transform: scale(0.6); }
+        55.6% { opacity: 0.8; transform: scale(1.8); }
+        56.4% { opacity: 0; transform: scale(3.2); }
         100% { opacity: 0; }
       }
       @keyframes rippleAnim3 {
-        0%, 56.6% { opacity: 0; transform: scale(0.2); }
-        57.0% { opacity: 1; transform: scale(0.6); }
-        58.0% { opacity: 0.8; transform: scale(1.8); }
-        59.0% { opacity: 0; transform: scale(3.2); }
+        0%, 56.4% { opacity: 0; transform: scale(0.2); }
+        56.8% { opacity: 1; transform: scale(0.6); }
+        57.6% { opacity: 0.8; transform: scale(1.8); }
+        58.4% { opacity: 0; transform: scale(3.2); }
         100% { opacity: 0; }
       }
       @keyframes rippleAnim4 {
-        0%, 59.6% { opacity: 0; transform: scale(0.2); }
-        60.0% { opacity: 1; transform: scale(0.6); }
-        61.0% { opacity: 0.8; transform: scale(1.8); }
-        62.0% { opacity: 0; transform: scale(3.2); }
+        0%, 58.4% { opacity: 0; transform: scale(0.2); }
+        58.8% { opacity: 1; transform: scale(0.6); }
+        59.6% { opacity: 0.8; transform: scale(1.8); }
+        60.4% { opacity: 0; transform: scale(3.2); }
+        100% { opacity: 0; }
+      }
+      @keyframes rippleAnim5 {
+        0%, 60.4% { opacity: 0; transform: scale(0.2); }
+        60.8% { opacity: 1; transform: scale(0.6); }
+        61.6% { opacity: 0.8; transform: scale(1.8); }
+        62.4% { opacity: 0; transform: scale(3.2); }
+        100% { opacity: 0; }
+      }
+      @keyframes rippleAnim6 {
+        0%, 62.4% { opacity: 0; transform: scale(0.2); }
+        62.8% { opacity: 1; transform: scale(0.6); }
+        63.6% { opacity: 0.8; transform: scale(1.8); }
+        64.4% { opacity: 0; transform: scale(3.2); }
         100% { opacity: 0; }
       }
 
@@ -490,46 +591,59 @@ export function getStyles(theme, mode) {
         100% { r: 18px; opacity: 0; }
       }
 
-      /* Clicked Tile Flash Highlight for each tile */
+      /* Clicked Tile Flash Highlight for each row */
       .tile-flash {
         opacity: 0;
         transform-origin: 5px 5px;
       }
-      .tile-flash.t1 {
-        animation: tileFlash1 28s ease-in-out infinite;
-      }
-      .tile-flash.t2 {
-        animation: tileFlash2 28s ease-in-out infinite;
-      }
-      .tile-flash.t3 {
-        animation: tileFlash3 28s ease-in-out infinite;
-      }
-      .tile-flash.t4 {
-        animation: tileFlash4 28s ease-in-out infinite;
-      }
+      .tile-flash.t0 { animation: tileFlash0 28s ease-in-out infinite; }
+      .tile-flash.t1 { animation: tileFlash1 28s ease-in-out infinite; }
+      .tile-flash.t2 { animation: tileFlash2 28s ease-in-out infinite; }
+      .tile-flash.t3 { animation: tileFlash3 28s ease-in-out infinite; }
+      .tile-flash.t4 { animation: tileFlash4 28s ease-in-out infinite; }
+      .tile-flash.t5 { animation: tileFlash5 28s ease-in-out infinite; }
+      .tile-flash.t6 { animation: tileFlash6 28s ease-in-out infinite; }
 
+      @keyframes tileFlash0 {
+        0%, 50.4% { opacity: 0; transform: scale(1); }
+        50.8% { opacity: 1; transform: scale(1.4); }
+        51.4%, 66.0% { opacity: 1; transform: scale(1.15); }
+        66.8%, 100% { opacity: 0; transform: scale(1); }
+      }
       @keyframes tileFlash1 {
-        0%, 51.0% { opacity: 0; transform: scale(1); }
-        51.4% { opacity: 1; transform: scale(1.4); }
-        52.2%, 66.0% { opacity: 1; transform: scale(1.15); }
+        0%, 52.4% { opacity: 0; transform: scale(1); }
+        52.8% { opacity: 1; transform: scale(1.4); }
+        53.4%, 66.0% { opacity: 1; transform: scale(1.15); }
         66.8%, 100% { opacity: 0; transform: scale(1); }
       }
       @keyframes tileFlash2 {
-        0%, 53.6% { opacity: 0; transform: scale(1); }
-        54.0% { opacity: 1; transform: scale(1.4); }
-        54.8%, 66.0% { opacity: 1; transform: scale(1.15); }
+        0%, 54.4% { opacity: 0; transform: scale(1); }
+        54.8% { opacity: 1; transform: scale(1.4); }
+        55.4%, 66.0% { opacity: 1; transform: scale(1.15); }
         66.8%, 100% { opacity: 0; transform: scale(1); }
       }
       @keyframes tileFlash3 {
-        0%, 56.6% { opacity: 0; transform: scale(1); }
-        57.0% { opacity: 1; transform: scale(1.4); }
-        57.8%, 66.0% { opacity: 1; transform: scale(1.15); }
+        0%, 56.4% { opacity: 0; transform: scale(1); }
+        56.8% { opacity: 1; transform: scale(1.4); }
+        57.4%, 66.0% { opacity: 1; transform: scale(1.15); }
         66.8%, 100% { opacity: 0; transform: scale(1); }
       }
       @keyframes tileFlash4 {
-        0%, 59.6% { opacity: 0; transform: scale(1); }
-        60.0% { opacity: 1; transform: scale(1.4); }
-        60.8%, 66.0% { opacity: 1; transform: scale(1.15); }
+        0%, 58.4% { opacity: 0; transform: scale(1); }
+        58.8% { opacity: 1; transform: scale(1.4); }
+        59.4%, 66.0% { opacity: 1; transform: scale(1.15); }
+        66.8%, 100% { opacity: 0; transform: scale(1); }
+      }
+      @keyframes tileFlash5 {
+        0%, 60.4% { opacity: 0; transform: scale(1); }
+        60.8% { opacity: 1; transform: scale(1.4); }
+        61.4%, 66.0% { opacity: 1; transform: scale(1.15); }
+        66.8%, 100% { opacity: 0; transform: scale(1); }
+      }
+      @keyframes tileFlash6 {
+        0%, 62.4% { opacity: 0; transform: scale(1); }
+        62.8% { opacity: 1; transform: scale(1.4); }
+        63.4%, 66.0% { opacity: 1; transform: scale(1.15); }
         66.8%, 100% { opacity: 0; transform: scale(1); }
       }
 
@@ -539,15 +653,15 @@ export function getStyles(theme, mode) {
         animation: bubblePopup 28s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
       }
       @keyframes bubblePopup {
-        0%, 50.6% {
+        0%, 50.4% {
           opacity: 0;
           transform: scale(0.3) translateY(12px);
         }
-        51.5% {
+        51.2% {
           opacity: 1;
           transform: scale(1.06) translateY(-2px);
         }
-        52.5%, 65.5% {
+        52.0%, 65.5% {
           opacity: 1;
           transform: scale(1.0) translateY(0);
         }

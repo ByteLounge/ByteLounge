@@ -373,6 +373,7 @@ export function posterCard(data, mode = "dark") {
       const cx = GRID_START_X + w * (CELL_SIZE + CELL_GAP);
       const cy = GRID_START_Y + d * (CELL_SIZE + CELL_GAP);
 
+      // Base grid cell (shows quiet empty day in calendar)
       parts.push(
         rect({
           x: cx,
@@ -380,10 +381,25 @@ export function posterCard(data, mode = "dark") {
           width: CELL_SIZE,
           height: CELL_SIZE,
           rx: 2,
-          fill: cellFill,
+          fill: theme.gridZero,
           cls: `rise d${Math.min(65, 48 + Math.floor(w / 4))}`,
         })
       );
+
+      // Active contribution square (illuminated when cat taps into that row!)
+      if (count > 0) {
+        parts.push(
+          rect({
+            x: cx,
+            y: cy,
+            width: CELL_SIZE,
+            height: CELL_SIZE,
+            rx: 2,
+            fill: cellFill,
+            cls: `contrib-cell row-${d}`,
+          })
+        );
+      }
     }
   }
 

@@ -273,19 +273,22 @@ export function walkingCatAnimation(theme, stats, mode = "dark") {
   const bubbleBorder = isDark ? "#f6ad55" : "#c05621";
   const bubbleText = isDark ? "#f6ad55" : "#c05621";
 
-  // 4 Tap targets across all contribution clusters on the map
+  // 7 Tap targets — exactly one active contribution square from each of the 7 rows
   const taps = [
-    { x: 296, y: 650, idx: 1 }, // Week 17
-    { x: 436, y: 638, idx: 2 }, // Week 27
-    { x: 576, y: 660, idx: 3 }, // Week 37
-    { x: 716, y: 645, idx: 4 }, // Week 47
+    { x: 360.0, y: 690.0, row: 0 }, // Row 0 (Sun)
+    { x: 516.2, y: 704.2, row: 1 }, // Row 1 (Mon)
+    { x: 558.8, y: 718.4, row: 2 }, // Row 2 (Tue)
+    { x: 700.8, y: 732.6, row: 3 }, // Row 3 (Wed)
+    { x: 743.4, y: 746.8, row: 4 }, // Row 4 (Thu)
+    { x: 715.0, y: 761.0, row: 5 }, // Row 5 (Fri)
+    { x: 700.8, y: 775.2, row: 6 }, // Row 6 (Sat)
   ];
 
-  // Speech bubble placement: sits cleanly in header space above calendar (ZERO overlap with heatmap squares!)
+  // Speech bubble placement: sits cleanly in space above calendar (ZERO overlap with heatmap squares!)
   const bubbleW = 296;
   const bubbleH = 32;
   const bubbleX = 336;
-  const bubbleY = 548;
+  const bubbleY = 620;
 
   return `
     <!-- Walking Cat Adventure and Contribution Clicker -->
@@ -293,8 +296,8 @@ export function walkingCatAnimation(theme, stats, mode = "dark") {
       <!-- 1. Highlighted Contribution Tiles across all active weeks -->
       <g class="clicked-tiles">
         ${taps.map(t => `
-          <g class="clicked-tile t${t.idx}" transform="translate(${t.x}, ${t.y})">
-            <rect x="0" y="0" width="10" height="10" rx="2" fill="${theme.accent}" stroke="${theme.accent}" stroke-width="2" class="tile-flash t${t.idx}" />
+          <g class="clicked-tile t${t.row}" transform="translate(${t.x}, ${t.y})">
+            <rect x="0" y="0" width="10" height="10" rx="2" fill="${theme.accent}" stroke="${theme.accent}" stroke-width="2" class="tile-flash t${t.row}" />
           </g>
         `).join("")}
       </g>
@@ -303,7 +306,7 @@ export function walkingCatAnimation(theme, stats, mode = "dark") {
       <g class="contrib-ripples">
         ${taps.map(t => `
           <g transform="translate(${t.x + 5}, ${t.y + 5})">
-            <g class="contrib-ripple r${t.idx}">
+            <g class="contrib-ripple r${t.row}">
               <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent}" stroke-width="2.2" class="ripple-circle r1" />
               <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent2}" stroke-width="1.6" class="ripple-circle r2" />
             </g>
@@ -427,6 +430,12 @@ export function walkingCatAnimation(theme, stats, mode = "dark") {
               </g>
             </g>
 
+            <!-- Tail with smooth wagging animation (joint anchored permanently at body x=10, y=14) -->
+            <g class="cat-tail-group" transform="translate(10, 14)">
+              <path d="M 0 0 C -4 0 -8 -3 -11 -11" stroke="${catColor}" stroke-width="3" fill="none" stroke-linecap="round" />
+              <circle cx="-11" cy="-11" r="1.8" fill="${catBelly}" />
+            </g>
+
             <!-- Cat Torso & Body -->
             <ellipse cx="18" cy="14" rx="13" ry="8" fill="${catColor}" />
             <ellipse cx="19" cy="16" rx="9" ry="5" fill="${catBelly}" />
@@ -463,12 +472,6 @@ export function walkingCatAnimation(theme, stats, mode = "dark") {
             <polygon points="35.5,12 37.5,12 36.5,13" fill="#f43f5e" />
             <line x1="34" y1="12" x2="39" y2="10.5" stroke="${catBelly}" stroke-width="0.8" />
             <line x1="34" y1="13" x2="39" y2="13.5" stroke="${catBelly}" stroke-width="0.8" />
-
-            <!-- Tail with smooth wagging animation (anchored at body junction x=5, y=14) -->
-            <g class="cat-tail-group">
-              <path d="M 5 14 Q -3 10 -1 3" stroke="${catColor}" stroke-width="2.8" fill="none" stroke-linecap="round" />
-              <circle cx="-1" cy="3" r="1.6" fill="${catBelly}" />
-            </g>
           </g>
         </g>
       </g>
