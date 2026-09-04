@@ -432,9 +432,11 @@ export function walkingCatAnimation(theme, stats, mode = "dark") {
             <line x1="34" y1="12" x2="39" y2="10.5" stroke="${catBelly}" stroke-width="0.8" />
             <line x1="34" y1="13" x2="39" y2="13.5" stroke="${catBelly}" stroke-width="0.8" />
 
-            <!-- Tail with smooth wagging animation -->
-            <path class="cat-tail-wag" d="M 5 14 Q -3 10 -1 3" stroke="${catColor}" stroke-width="2.8" fill="none" stroke-linecap="round" />
-            <circle cx="-1" cy="3" r="1.6" fill="${catBelly}" />
+            <!-- Tail with smooth wagging animation (anchored at body junction x=5, y=14) -->
+            <g class="cat-tail-group">
+              <path d="M 5 14 Q -3 10 -1 3" stroke="${catColor}" stroke-width="2.8" fill="none" stroke-linecap="round" />
+              <circle cx="-1" cy="3" r="1.6" fill="${catBelly}" />
+            </g>
           </g>
         </g>
       </g>

@@ -41,15 +41,14 @@
         100% { opacity: 1; }
       }
 
-      /* Cat rhythmic slow breathing */
+      /* Cat rhythmic slow breathing (anchored to base at cushion contact) */
       .cat-breathe {
-        transform-box: fill-box;
-        transform-origin: center bottom;
+        transform-origin: 20px 20px;
         animation: catBreathe 3.8s ease-in-out infinite alternate;
       }
       @keyframes catBreathe {
         0% { transform: scale(1, 1); }
-        100% { transform: scale(1.04, 1.07) translateY(-1px); }
+        100% { transform: scale(1.03, 1.05) translateY(-0.5px); }
       }
 
       /* Steaming coffee mug */
@@ -206,18 +205,18 @@
         animation: catSleepPoseSync 28s ease-in-out infinite;
       }
       @keyframes catSleepPoseSync {
-        0%, 26% { opacity: 1; pointer-events: none; }
-        27%, 97.5% { opacity: 0; pointer-events: none; }
-        98%, 100% { opacity: 1; pointer-events: none; }
+        0%, 26% { opacity: 1; visibility: visible; }
+        26.5%, 97.5% { opacity: 0; visibility: hidden; }
+        98%, 100% { opacity: 1; visibility: visible; }
       }
 
       .cat-sleep-zzz {
         animation: catZzzSync 28s ease-in-out infinite;
       }
       @keyframes catZzzSync {
-        0%, 25.5% { opacity: 1; }
-        26.5%, 98% { opacity: 0; }
-        98.5%, 100% { opacity: 1; }
+        0%, 25.5% { opacity: 1; visibility: visible; }
+        26.5%, 98% { opacity: 0; visibility: hidden; }
+        98.5%, 100% { opacity: 1; visibility: visible; }
       }
 
       .zzz-letter {
@@ -237,14 +236,14 @@
         animation: catActivePoseSync 28s ease-in-out infinite;
       }
       @keyframes catActivePoseSync {
-        0%, 26.5% { opacity: 0; }
-        27%, 97.5% { opacity: 1; }
-        98%, 100% { opacity: 0; }
+        0%, 26.5% { opacity: 0; visibility: hidden; }
+        27%, 97.5% { opacity: 1; visibility: visible; }
+        98%, 100% { opacity: 0; visibility: hidden; }
       }
 
-      /* Leg Walk Cycles */
+      /* Leg Walk Cycles: anchored at 0 0 (exact hip/shoulder joint on body) */
       .walk-leg {
-        transform-origin: top center;
+        transform-origin: 0px 0px;
       }
       .walk-leg.f1, .walk-leg.b2 {
         animation: legStepA 0.32s ease-in-out infinite alternate;
@@ -253,21 +252,21 @@
         animation: legStepB 0.32s ease-in-out infinite alternate;
       }
       @keyframes legStepA {
-        0% { transform: rotate(-22deg); }
-        100% { transform: rotate(22deg); }
+        0% { transform: rotate(-20deg); }
+        100% { transform: rotate(20deg); }
       }
       @keyframes legStepB {
-        0% { transform: rotate(22deg); }
-        100% { transform: rotate(-22deg); }
+        0% { transform: rotate(20deg); }
+        100% { transform: rotate(-20deg); }
       }
 
       .cat-legs-walk {
         animation: catLegsActive 28s ease-in-out infinite;
       }
       @keyframes catLegsActive {
-        0%, 51.5% { opacity: 1; }
-        52%, 67% { opacity: 0; }
-        67.5%, 100% { opacity: 1; }
+        0%, 51.5% { opacity: 1; visibility: visible; }
+        52%, 67% { opacity: 0; visibility: hidden; }
+        67.5%, 100% { opacity: 1; visibility: visible; }
       }
 
       /* Sit pose and clicking paw */
@@ -275,49 +274,50 @@
         animation: catSitActive 28s ease-in-out infinite;
       }
       @keyframes catSitActive {
-        0%, 51.5% { opacity: 0; }
-        52%, 67% { opacity: 1; }
-        67.5%, 100% { opacity: 0; }
+        0%, 51.5% { opacity: 0; visibility: hidden; }
+        52%, 67% { opacity: 1; visibility: visible; }
+        67.5%, 100% { opacity: 0; visibility: hidden; }
       }
 
       .cat-eyes-walk {
         animation: catEyesWalkSync 28s ease-in-out infinite;
       }
       @keyframes catEyesWalkSync {
-        0%, 51.5% { opacity: 1; }
-        52%, 67% { opacity: 0; }
-        67.5%, 100% { opacity: 1; }
+        0%, 51.5% { opacity: 1; visibility: visible; }
+        52%, 67% { opacity: 0; visibility: hidden; }
+        67.5%, 100% { opacity: 1; visibility: visible; }
       }
 
       .cat-eyes-sit {
         animation: catEyesSitSync 28s ease-in-out infinite;
       }
       @keyframes catEyesSitSync {
-        0%, 51.5% { opacity: 0; }
-        52%, 67% { opacity: 1; }
-        67.5%, 100% { opacity: 0; }
+        0%, 51.5% { opacity: 0; visibility: hidden; }
+        52%, 67% { opacity: 1; visibility: visible; }
+        67.5%, 100% { opacity: 0; visibility: hidden; }
       }
 
+      /* Paw clicker anchored permanently at shoulder joint 0 0 (no translate offset) */
       .cat-paw-clicker {
         transform-origin: 0px 0px;
         animation: pawClick 28s ease-in-out infinite;
       }
       @keyframes pawClick {
         0%, 54.5% { transform: rotate(0deg); }
-        55.5% { transform: rotate(-35deg) translate(-2px, -3px); }
-        56.5% { transform: rotate(20deg) translate(8px, 4px); } /* TAP MAP! */
+        55.5% { transform: rotate(-32deg); } /* raises paw */
+        56.5% { transform: rotate(18deg); }  /* taps down cleanly */
         58.0%, 67% { transform: rotate(0deg); }
         67.5%, 100% { transform: rotate(0deg); }
       }
 
-      /* Tail Wagging */
-      .cat-tail-wag {
-        transform-origin: bottom right;
+      /* Tail Wagging: anchored permanently at body junction (5px 14px) */
+      .cat-tail-group {
+        transform-origin: 5px 14px;
         animation: tailWag 1.8s ease-in-out infinite alternate;
       }
       @keyframes tailWag {
-        0% { transform: rotate(-14deg); }
-        100% { transform: rotate(22deg); }
+        0% { transform: rotate(-10deg); }
+        100% { transform: rotate(16deg); }
       }
 
       /* Click Ripple Effect on the Contribution Map */
@@ -972,9 +972,11 @@
             <line x1="34" y1="12" x2="39" y2="10.5" stroke="#fef3c7" stroke-width="0.8" />
             <line x1="34" y1="13" x2="39" y2="13.5" stroke="#fef3c7" stroke-width="0.8" />
 
-            <!-- Tail with smooth wagging animation -->
-            <path class="cat-tail-wag" d="M 5 14 Q -3 10 -1 3" stroke="#f97316" stroke-width="2.8" fill="none" stroke-linecap="round" />
-            <circle cx="-1" cy="3" r="1.6" fill="#fef3c7" />
+            <!-- Tail with smooth wagging animation (anchored at body junction x=5, y=14) -->
+            <g class="cat-tail-group">
+              <path d="M 5 14 Q -3 10 -1 3" stroke="#f97316" stroke-width="2.8" fill="none" stroke-linecap="round" />
+              <circle cx="-1" cy="3" r="1.6" fill="#fef3c7" />
+            </g>
           </g>
         </g>
       </g>
