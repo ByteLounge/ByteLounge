@@ -58,27 +58,13 @@ async function collectGraphQL(login, token) {
   const cal = user?.contributionsCollection?.contributionCalendar;
   const days = (cal?.weeks || []).flatMap((w) => w.contributionDays);
 
-  let activeDays = 0;
-  let curStreak = 0;
-  let maxStreak = 0;
-  let streak = 0;
-
-  for (const d of days) {
-    if (d.contributionCount > 0) {
-      activeDays++;
-      streak++;
-      if (streak > maxStreak) maxStreak = streak;
-    } else {
-      streak = 0;
-    }
-  }
-  curStreak = streak;
+  const streaks = calculateStreaks(days);
 
   return {
     total: cal?.totalContributions || 0,
-    activeDays,
-    curStreak,
-    maxStreak,
+    activeDays: streaks.activeDays,
+    curStreak: streaks.curStreak,
+    maxStreak: streaks.maxStreak,
     repoCount: user?.repositories?.totalCount || 43,
     weeks: cal?.weeks || [],
   };
@@ -148,27 +134,44 @@ async function collectREST(login) {
     weeks.push({ contributionDays: days.slice(i, i + 7) });
   }
 
-  // Calculate streaks and active days
+  const streaks = calculateStreaks(days);
+
+  return {
+    total: total || 490,
+    activeDays: streaks.activeDays || 58,
+    curStreak: streaks.curStreak,
+    maxStreak: streaks.maxStreak,
+    repoCount,
+    weeks: weeks.slice(-52),
+  };
+}
+
+function calculateStreaks(days) {
   let activeDays = 0;
   let maxStreak = 0;
-  let runningStreak = 0;
+  let tempStreak = 0;
 
   for (const d of days) {
     if (d.contributionCount > 0) {
       activeDays++;
-      runningStreak++;
-      if (runningStreak > maxStreak) maxStreak = runningStreak;
+      tempStreak++;
+      if (tempStreak > maxStreak) maxStreak = tempStreak;
     } else {
-      runningStreak = 0;
+      tempStreak = 0;
     }
   }
 
-  return {
-    total: total || 490,
-    activeDays: activeDays || 58,
-    curStreak: runningStreak || 1,
-    maxStreak: maxStreak || 5,
-    repoCount,
-    weeks: weeks.slice(-52),
-  };
+  // Calculate current streak backwards from latest day
+  let currentStreak = 0;
+  let i = days.length - 1;
+  // If today's contribution count is 0 so far, streak from yesterday is still active!
+  if (i >= 0 && days[i].contributionCount === 0) {
+    i--;
+  }
+  while (i >= 0 && days[i].contributionCount > 0) {
+    currentStreak++;
+    i--;
+  }
+
+  return { activeDays, maxStreak, curStreak: currentStreak };
 }

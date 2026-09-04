@@ -1,12 +1,13 @@
-name: update cards
+﻿name: Update Profile Stats
 
 on:
   schedule:
-    # 00:30 UTC daily — 06:00 IST
-    - cron: "30 0 * * *"
-  workflow_dispatch:
+    # Runs twice a day at 00:00 UTC and 12:00 UTC (05:30 & 17:30 IST)
+    - cron: "0 0,12 * * *"
+  workflow_dispatch: # Allows manual trigger from Actions tab anytime
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - "scripts/**"
       - ".github/workflows/update-cards.yml"
@@ -14,50 +15,44 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: update-cards
-  cancel-in-progress: true
-
 jobs:
-  generate:
+  update-profile-cards:
+    name: Generate & Update Profile Cards
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          node-version: 22
+          persist-credentials: true
 
-      - name: Generate Lofi Girl profile cards
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Fetch stats & generate cards
         env:
-          # Optional: Personal Access Token (classic) with read:user and repo
-          # Falls back to standard GITHUB_TOKEN for public contributions
+          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
-          GH_LOGIN: ByteLounge
-          LEETCODE_USER: yashsanikop
+          GH_LOGIN: "ByteLounge"
+          LEETCODE_USER: "yashsanikop"
         run: node scripts/generate-cards.mjs
 
-      - name: Commit if changed
+      - name: Commit & push updated cards
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add assets
-          if ! git diff --staged --quiet; then
-            git commit -m "chore: refresh lofi girl profile cards"
-            git push
-            exit 0
-          fi
-
-          # Heartbeat check to prevent GitHub from disabling scheduled workflow
-          # after 60 days of quiet repo activity
-          age=$(( ( $(date -u +%s) - $(git log -1 --format=%ct) ) / 86400 ))
-          echo "assets unchanged; last commit ${age} day(s) ago"
-
-          if [ "$age" -ge 25 ]; then
-            mkdir -p .github
-            date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/last-run
-            git add .github/last-run
-            git commit -m "chore: heartbeat, keep lofi schedule armed"
-            git push
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/
+          if git diff --staged --quiet; then
+            echo "No changes in generated SVG assets. Everything is up to date."
+          else
+            git commit -m "chore(stats): update GitHub contributions, LeetCode & profile cards [skip ci]"
+            git push origin main
           fi

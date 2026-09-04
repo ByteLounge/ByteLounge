@@ -35,7 +35,7 @@ async function write(name, contents) {
 }
 
 async function main() {
-  const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN || null;
+  const token = process.env.PROFILE_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_TOKEN || null;
   const login = process.env.GH_LOGIN || "ByteLounge";
   const leetcodeUser = process.env.LEETCODE_USER || "yashsanikop";
 
