@@ -185,39 +185,14 @@ export function lofiVignette(theme, mode = "dark") {
         <circle cx="52.5" cy="30" r="2" fill="#ede9fe" />
       </g>
 
-      <!-- 6. SLEEPING GINGER CAT (Curled on desk) -->
-      <g class="sleeping-cat" transform="translate(58, 142)">
-        <!-- Soft sleeping cushion / rug (always on desk) -->
-        <ellipse cx="22" cy="18" rx="24" ry="7" fill="${isDark ? '#3b2d54' : '#d8b4e2'}" opacity="0.6" />
-        
-        <g class="sleeping-cat-body">
-          <g class="cat-breathe">
-            <!-- Cat Body (curled bean shape) -->
-            <ellipse cx="20" cy="12" rx="15" ry="9" fill="${catColor}" />
-            <!-- Fluffy belly patch -->
-            <ellipse cx="22" cy="13" rx="10" ry="5.5" fill="${catBelly}" />
-            <!-- Fur stripes -->
-            <path d="M 16 6 Q 18 10 17 14" fill="none" stroke="#b45309" stroke-width="1.2" stroke-linecap="round" />
-            <path d="M 22 5 Q 23 9 22 13" fill="none" stroke="#b45309" stroke-width="1.2" stroke-linecap="round" />
-            
-            <!-- Cat Head -->
-            <circle cx="33" cy="10" r="7" fill="${catColor}" />
-            <!-- Cat Ears -->
-            <polygon points="30,4 34,0 35,6" fill="${catColor}" />
-            <polygon points="35,4 39,1 38,7" fill="${catColor}" />
-            <polygon points="31,4 34,2 34,5" fill="#fda4af" />
-            <!-- Peaceful closed sleeping eyes (^^) -->
-            <path d="M 32 10 Q 33.5 12 35 10" fill="none" stroke="#78350f" stroke-width="0.9" stroke-linecap="round" />
-            <path d="M 36 10 Q 37.5 12 39 10" fill="none" stroke="#78350f" stroke-width="0.9" stroke-linecap="round" />
-            <!-- Tiny nose -->
-            <circle cx="36" cy="13" r="0.8" fill="#f43f5e" />
-
-            <!-- Curled Tail -->
-            <path d="M 6 12 Q 2 16 6 20 Q 14 20 18 16" fill="none" stroke="${catColor}" stroke-width="3" stroke-linecap="round" />
-            <!-- Tail white tip -->
-            <circle cx="6" cy="12" r="1.8" fill="${catBelly}" />
-          </g>
-        </g>
+      <!-- 6. COZY CAT SLEEPING CUSHION ON DESK (Beside the girl) -->
+      <g class="sleeping-cat-cushion" transform="translate(58, 142)">
+        <!-- Soft sleeping cushion / rug on desk -->
+        <ellipse cx="22" cy="18" rx="25" ry="8" fill="${isDark ? '#3b2d54' : '#d8b4e2'}" opacity="0.75" />
+        <ellipse cx="22" cy="18" rx="20" ry="6" fill="${isDark ? '#2a1f3d' : '#eed9f2'}" opacity="0.5" />
+        <!-- Cozy cushion stitches / fringe -->
+        <line x1="3" y1="18" x2="6" y2="19" stroke="${isDark ? '#6b4c8a' : '#b794f4'}" stroke-width="1" opacity="0.6" />
+        <line x1="38" y1="18" x2="41" y2="19" stroke="${isDark ? '#6b4c8a' : '#b794f4'}" stroke-width="1" opacity="0.6" />
       </g>
 
       <!-- 7. STEAMING CERAMIC MUG -->
@@ -348,10 +323,46 @@ export function walkingCatAnimation(theme, stats, mode = "dark") {
         </g>
       </g>
 
-      <!-- 4. The Animated Travelling Cat (100% CSS Keyframe powered) -->
+      <!-- 4. The Animated Cat (Sleeping on desk beside girl, then travelling & returning) -->
       <g class="cat-traveller-mover">
         <g class="cat-facer">
-          <g class="cat-body-group" transform="scale(1.2)">
+          <!-- A. SLEEP POSE (Curled up sleeping on desk cushion beside girl on top right) -->
+          <g class="cat-sleep-pose" transform="scale(1.15)">
+            <g class="cat-breathe">
+              <!-- Curled Cat Body -->
+              <ellipse cx="20" cy="12" rx="15" ry="9" fill="${catColor}" />
+              <!-- Fluffy belly patch -->
+              <ellipse cx="22" cy="13" rx="10" ry="5.5" fill="${catBelly}" />
+              <!-- Fur stripes -->
+              <path d="M 16 6 Q 18 10 17 14" fill="none" stroke="${catStripe}" stroke-width="1.2" stroke-linecap="round" />
+              <path d="M 22 5 Q 23 9 22 13" fill="none" stroke="${catStripe}" stroke-width="1.2" stroke-linecap="round" />
+              
+              <!-- Cat Head -->
+              <circle cx="33" cy="10" r="7" fill="${catColor}" />
+              <!-- Cat Ears -->
+              <polygon points="30,4 34,0 35,6" fill="${catColor}" />
+              <polygon points="35,4 39,1 38,7" fill="${catColor}" />
+              <polygon points="31,4 34,2 34,5" fill="#fda4af" />
+              <!-- Peaceful closed sleeping eyes (^^) -->
+              <path d="M 32 10 Q 33.5 12 35 10" fill="none" stroke="#78350f" stroke-width="0.9" stroke-linecap="round" />
+              <path d="M 36 10 Q 37.5 12 39 10" fill="none" stroke="#78350f" stroke-width="0.9" stroke-linecap="round" />
+              <!-- Tiny nose -->
+              <circle cx="36" cy="13" r="0.8" fill="#f43f5e" />
+
+              <!-- Curled Tail -->
+              <path d="M 6 12 Q 2 16 6 20 Q 14 20 18 16" fill="none" stroke="${catColor}" stroke-width="3" stroke-linecap="round" />
+              <!-- Tail white tip -->
+              <circle cx="6" cy="12" r="1.8" fill="${catBelly}" />
+            </g>
+            <!-- Floating Zzz letters while sleeping peacefully beside the girl -->
+            <g class="cat-sleep-zzz">
+              <text x="36" y="2" font-family="'Space Grotesk', -apple-system, sans-serif" font-size="8.5" font-weight="700" fill="${theme.accent2}" class="zzz-letter z1">z</text>
+              <text x="43" y="-5" font-family="'Space Grotesk', -apple-system, sans-serif" font-size="11" font-weight="700" fill="${theme.accent}" class="zzz-letter z2">Z</text>
+            </g>
+          </g>
+
+          <!-- B. ACTIVE TRAVELLING POSE (Walk, sit, and tap across the page) -->
+          <g class="cat-active-pose" transform="scale(1.15)">
             <!-- Walking Leg Cycles (Active while moving) -->
             <g class="cat-legs-walk">
               <g class="walk-leg f1" transform="translate(24, 18)">

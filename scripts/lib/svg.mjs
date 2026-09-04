@@ -225,52 +225,105 @@ export function getStyles(theme, mode) {
 
       /* ---------------- Walking Cat Adventure and Contribution Clicker ---------------- */
       .cat-traveller-mover {
-        animation: catWalkJourney 24s ease-in-out infinite;
+        animation: catWalkJourney 28s ease-in-out infinite;
       }
       @keyframes catWalkJourney {
-        /* 1. Start at desk cushion */
-        0% { transform: translate(620px, 185px); }
-        4% { transform: translate(740px, 205px); }
-        /* 2. Walk down right border */
-        8% { transform: translate(800px, 320px); }
-        12% { transform: translate(800px, 460px); }
-        /* 3. Walk left across activity section */
-        16% { transform: translate(640px, 510px); }
-        22% { transform: translate(380px, 510px); }
-        28% { transform: translate(120px, 520px); }
-        /* 4. Descend to contribution map header */
-        33% { transform: translate(80px, 600px); }
-        38% { transform: translate(260px, 620px); }
-        43% { transform: translate(430px, 635px); }
-        /* 5. Sits right next to contribution tile at (504, 660) */
-        47%, 66% { transform: translate(470px, 640px); }
-        /* 6. Descend into Problem Solving section */
-        70% { transform: translate(280px, 740px); }
-        75% { transform: translate(90px, 860px); }
-        /* 7. Walk down into Socials and Connect section */
-        80% { transform: translate(80px, 980px); }
-        84% { transform: translate(380px, 1030px); }
-        88% { transform: translate(680px, 1030px); }
-        /* 8. Near cozy footer */
-        92% { transform: translate(770px, 1060px); }
-        /* 9. Ascend along right edge back up to desk */
-        95% { transform: translate(810px, 700px); }
-        98% { transform: translate(780px, 300px); }
-        100% { transform: translate(620px, 185px); }
+        /* 1. Curled up sleeping peacefully on desk cushion beside the girl on top right */
+        0%, 26% { transform: translate(576px, 166px); }
+        /* 2. Wake up & stand on desk */
+        27% { transform: translate(576px, 166px); }
+        /* 3. Walk across desk surface */
+        30% { transform: translate(700px, 182px); }
+        /* 4. Descend along right border */
+        33% { transform: translate(800px, 260px); }
+        36% { transform: translate(800px, 420px); }
+        /* 5. Walk left across activity section */
+        40% { transform: translate(620px, 505px); }
+        43% { transform: translate(380px, 505px); }
+        46% { transform: translate(120px, 515px); }
+        /* 6. Step down to contribution map */
+        48% { transform: translate(80px, 595px); }
+        50% { transform: translate(260px, 615px); }
+        /* 7. Arrives and sits at Contribution Map */
+        52%, 67% { transform: translate(470px, 640px); }
+        /* 8. Step down into Problem Solving section */
+        71% { transform: translate(280px, 730px); }
+        75% { transform: translate(90px, 850px); }
+        /* 9. Walk down into Socials and Connect section */
+        78% { transform: translate(80px, 975px); }
+        81% { transform: translate(380px, 1025px); }
+        84% { transform: translate(680px, 1025px); }
+        /* 10. Near cozy footer */
+        87% { transform: translate(770px, 1055px); }
+        /* 11. Ascend back up right edge to desk */
+        91% { transform: translate(810px, 720px); }
+        94% { transform: translate(800px, 420px); }
+        97% { transform: translate(750px, 210px); }
+        /* 12. Hops back onto desk cushion right beside the girl! */
+        98%, 100% { transform: translate(576px, 166px); }
       }
 
       /* Horizontal Facing direction (flips around cat local center 20px, 14px) */
       .cat-facer {
         transform-origin: 20px 14px;
-        animation: catFacerFlip 24s ease-in-out infinite;
+        animation: catFacerFlip 28s ease-in-out infinite;
       }
       @keyframes catFacerFlip {
-        0%, 14% { transform: scaleX(1); }
-        15%, 31% { transform: scaleX(-1); }
-        32%, 68% { transform: scaleX(1); }
-        69%, 82% { transform: scaleX(-1); }
-        83%, 93% { transform: scaleX(1); }
-        94%, 100% { transform: scaleX(-1); }
+        /* Sleeping on desk facing right toward lamp & girl */
+        0%, 37% { transform: scaleX(1); }
+        /* Walking left across activity */
+        38%, 47% { transform: scaleX(-1); }
+        /* Walking right along map and sitting */
+        48%, 69% { transform: scaleX(1); }
+        /* Walking left into problem solving */
+        70%, 79% { transform: scaleX(-1); }
+        /* Walking right across socials */
+        80%, 89% { transform: scaleX(1); }
+        /* Ascending right border */
+        90%, 97% { transform: scaleX(-1); }
+        /* Curled on cushion facing right */
+        98%, 100% { transform: scaleX(1); }
+      }
+
+      /* Pose Synchronization: Sleep vs Active */
+      .cat-sleep-pose {
+        animation: catSleepPoseSync 28s ease-in-out infinite;
+      }
+      @keyframes catSleepPoseSync {
+        0%, 26% { opacity: 1; pointer-events: none; }
+        27%, 97.5% { opacity: 0; pointer-events: none; }
+        98%, 100% { opacity: 1; pointer-events: none; }
+      }
+
+      .cat-sleep-zzz {
+        animation: catZzzSync 28s ease-in-out infinite;
+      }
+      @keyframes catZzzSync {
+        0%, 25.5% { opacity: 1; }
+        26.5%, 98% { opacity: 0; }
+        98.5%, 100% { opacity: 1; }
+      }
+
+      .zzz-letter {
+        transform-origin: center center;
+        animation: zzzFloat 2.6s ease-in-out infinite;
+      }
+      .zzz-letter.z2 {
+        animation-delay: 1.3s;
+      }
+      @keyframes zzzFloat {
+        0% { opacity: 0; transform: translate(0, 3px) scale(0.65); }
+        45% { opacity: 0.9; transform: translate(3px, -7px) scale(1.0); }
+        100% { opacity: 0; transform: translate(7px, -17px) scale(1.2); }
+      }
+
+      .cat-active-pose {
+        animation: catActivePoseSync 28s ease-in-out infinite;
+      }
+      @keyframes catActivePoseSync {
+        0%, 26.5% { opacity: 0; }
+        27%, 97.5% { opacity: 1; }
+        98%, 100% { opacity: 0; }
       }
 
       /* Leg Walk Cycles */
@@ -293,52 +346,52 @@ export function getStyles(theme, mode) {
       }
 
       .cat-legs-walk {
-        animation: catLegsActive 24s ease-in-out infinite;
+        animation: catLegsActive 28s ease-in-out infinite;
       }
       @keyframes catLegsActive {
-        0%, 48% { opacity: 1; }
-        49%, 66% { opacity: 0; }
-        67%, 100% { opacity: 1; }
+        0%, 51.5% { opacity: 1; }
+        52%, 67% { opacity: 0; }
+        67.5%, 100% { opacity: 1; }
       }
 
       /* Sit pose and clicking paw */
       .cat-sit-pose {
-        animation: catSitActive 24s ease-in-out infinite;
+        animation: catSitActive 28s ease-in-out infinite;
       }
       @keyframes catSitActive {
-        0%, 48% { opacity: 0; }
-        49%, 66% { opacity: 1; }
-        67%, 100% { opacity: 0; }
+        0%, 51.5% { opacity: 0; }
+        52%, 67% { opacity: 1; }
+        67.5%, 100% { opacity: 0; }
       }
 
       .cat-eyes-walk {
-        animation: catEyesWalkSync 24s ease-in-out infinite;
+        animation: catEyesWalkSync 28s ease-in-out infinite;
       }
       @keyframes catEyesWalkSync {
-        0%, 48% { opacity: 1; }
-        49%, 66% { opacity: 0; }
-        67%, 100% { opacity: 1; }
+        0%, 51.5% { opacity: 1; }
+        52%, 67% { opacity: 0; }
+        67.5%, 100% { opacity: 1; }
       }
 
       .cat-eyes-sit {
-        animation: catEyesSitSync 24s ease-in-out infinite;
+        animation: catEyesSitSync 28s ease-in-out infinite;
       }
       @keyframes catEyesSitSync {
-        0%, 48% { opacity: 0; }
-        49%, 66% { opacity: 1; }
-        67%, 100% { opacity: 0; }
+        0%, 51.5% { opacity: 0; }
+        52%, 67% { opacity: 1; }
+        67.5%, 100% { opacity: 0; }
       }
 
       .cat-paw-clicker {
         transform-origin: 0px 0px;
-        animation: pawClick 24s ease-in-out infinite;
+        animation: pawClick 28s ease-in-out infinite;
       }
       @keyframes pawClick {
-        0%, 49.5% { transform: rotate(0deg); }
-        50.5% { transform: rotate(-35deg) translate(-2px, -3px); }
-        51.5% { transform: rotate(20deg) translate(8px, 4px); } /* TAP MAP! */
-        53.0%, 66% { transform: rotate(0deg); }
-        67%, 100% { transform: rotate(0deg); }
+        0%, 54.5% { transform: rotate(0deg); }
+        55.5% { transform: rotate(-35deg) translate(-2px, -3px); }
+        56.5% { transform: rotate(20deg) translate(8px, 4px); } /* TAP MAP! */
+        58.0%, 67% { transform: rotate(0deg); }
+        67.5%, 100% { transform: rotate(0deg); }
       }
 
       /* Tail Wagging */
@@ -354,13 +407,13 @@ export function getStyles(theme, mode) {
       /* Click Ripple Effect on the Contribution Map */
       .contrib-ripple {
         transform-origin: center center;
-        animation: rippleContainer 24s ease-out infinite;
+        animation: rippleContainer 28s ease-out infinite;
       }
       @keyframes rippleContainer {
-        0%, 50.8% { opacity: 0; transform: scale(0.2); }
-        51.5% { opacity: 1; transform: scale(0.6); }
-        53.5% { opacity: 0.8; transform: scale(1.8); }
-        55.5% { opacity: 0; transform: scale(3.2); }
+        0%, 55.8% { opacity: 0; transform: scale(0.2); }
+        56.5% { opacity: 1; transform: scale(0.6); }
+        58.5% { opacity: 0.8; transform: scale(1.8); }
+        60.5% { opacity: 0; transform: scale(3.2); }
         100% { opacity: 0; }
       }
 
@@ -381,34 +434,34 @@ export function getStyles(theme, mode) {
 
       /* Clicked Tile Flash Highlight */
       .tile-flash {
-        animation: tileFlash 24s ease-in-out infinite;
+        animation: tileFlash 28s ease-in-out infinite;
       }
       @keyframes tileFlash {
-        0%, 50.8% { opacity: 0; transform: scale(1); }
-        51.5% { opacity: 1; transform: scale(1.35); }
-        52.5%, 65% { opacity: 1; transform: scale(1.15); }
-        66%, 100% { opacity: 0; transform: scale(1); }
+        0%, 55.8% { opacity: 0; transform: scale(1); }
+        56.5% { opacity: 1; transform: scale(1.35); }
+        57.5%, 65.5% { opacity: 1; transform: scale(1.15); }
+        66.5%, 100% { opacity: 0; transform: scale(1); }
       }
 
       /* Cat Speech Bubble Popup */
       .cat-speech-bubble {
         transform-origin: 150px 30px;
-        animation: bubblePopup 24s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+        animation: bubblePopup 28s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
       }
       @keyframes bubblePopup {
-        0%, 50.8% {
+        0%, 55.8% {
           opacity: 0;
           transform: scale(0.3) translateY(14px);
         }
-        51.8% {
+        56.8% {
           opacity: 1;
           transform: scale(1.06) translateY(-2px);
         }
-        52.8%, 64.5% {
+        57.8%, 65.5% {
           opacity: 1;
           transform: scale(1.0) translateY(0);
         }
-        66% {
+        67% {
           opacity: 0;
           transform: scale(0.7) translateY(8px);
         }
