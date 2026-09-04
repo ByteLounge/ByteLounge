@@ -273,57 +273,89 @@ export function walkingCatAnimation(theme, stats, mode = "dark") {
   const bubbleBorder = isDark ? "#f6ad55" : "#c05621";
   const bubbleText = isDark ? "#f6ad55" : "#c05621";
 
-  // Tap target on Contribution Map
-  const tapX = 511;
-  const tapY = 665;
+  // 4 Tap targets across all contribution clusters on the map
+  const taps = [
+    { x: 296, y: 650, idx: 1 }, // Week 17
+    { x: 436, y: 638, idx: 2 }, // Week 27
+    { x: 576, y: 660, idx: 3 }, // Week 37
+    { x: 716, y: 645, idx: 4 }, // Week 47
+  ];
 
   // Speech bubble placement: sits cleanly in header space above calendar (ZERO overlap with heatmap squares!)
-  const bubbleW = 290;
+  const bubbleW = 296;
   const bubbleH = 32;
-  const bubbleX = 340;
+  const bubbleX = 336;
   const bubbleY = 548;
 
   return `
     <!-- Walking Cat Adventure and Contribution Clicker -->
     <g class="cat-adventure">
-      <!-- 1. Highlighted Contribution Tile on the Calendar Grid -->
-      <g class="clicked-tile" transform="translate(506, 660)">
-        <rect x="0" y="0" width="10" height="10" rx="2" fill="${theme.accent}" stroke="${theme.accent}" stroke-width="2" class="tile-flash" />
+      <!-- 1. Highlighted Contribution Tiles across all active weeks -->
+      <g class="clicked-tiles">
+        ${taps.map(t => `
+          <g class="clicked-tile t${t.idx}" transform="translate(${t.x}, ${t.y})">
+            <rect x="0" y="0" width="10" height="10" rx="2" fill="${theme.accent}" stroke="${theme.accent}" stroke-width="2" class="tile-flash t${t.idx}" />
+          </g>
+        `).join("")}
       </g>
 
-      <!-- 2. Click Ripple Effect on the Contribution Map -->
-      <g class="contrib-ripple" transform="translate(${tapX}, ${tapY})">
-        <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent}" stroke-width="2.5" class="ripple-circle r1" />
-        <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent2}" stroke-width="1.8" class="ripple-circle r2" />
-        <!-- Sparkle bursts -->
-        <g class="sparkle-burst">
-          <path d="M-8,-8 L-12,-12 M8,-8 L12,-12 M-8,8 L-12,12 M8,8 L12,12" stroke="${theme.accent}" stroke-width="1.5" stroke-linecap="round" />
+      <!-- 2. Click Ripple Effects across the Contribution Map -->
+      <g class="contrib-ripples">
+        ${taps.map(t => `
+          <g transform="translate(${t.x + 5}, ${t.y + 5})">
+            <g class="contrib-ripple r${t.idx}">
+              <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent}" stroke-width="2.2" class="ripple-circle r1" />
+              <circle cx="0" cy="0" r="3" fill="none" stroke="${theme.accent2}" stroke-width="1.6" class="ripple-circle r2" />
+            </g>
+          </g>
+        `).join("")}
+      </g>
+
+      <!-- 3. Speech / Pop-up Bubble when cat taps into all contributions -->
+      <g transform="translate(${bubbleX}, ${bubbleY})">
+        <g class="cat-speech-bubble">
+          <!-- Drop shadow -->
+          <rect x="2" y="3" width="${bubbleW}" height="${bubbleH}" rx="${bubbleH / 2}" fill="rgba(0, 0, 0, 0.3)" />
+          <!-- Main Bubble Pill -->
+          <rect x="0" y="0" width="${bubbleW}" height="${bubbleH}" rx="${bubbleH / 2}" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.5" />
+          <!-- Pointer notch pointing down towards cat and tiles -->
+          <polygon points="170,${bubbleH} 176,${bubbleH + 7} 182,${bubbleH}" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.5" />
+          <line x1="171" y1="${bubbleH - 0.5}" x2="181" y2="${bubbleH - 0.5}" stroke="${bubbleBg}" stroke-width="2.5" />
+
+          <!-- Speech bubble text -->
+          <text x="${bubbleW / 2}" y="20.5" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="${bubbleText}" text-anchor="middle" letter-spacing="0.2">
+            🐾 Tapping all ${stats.total} contributions! ✨
+          </text>
+
+          <!-- Floating hearts and music notes -->
+          <g class="bubble-floaters">
+            <text x="${bubbleW - 20}" y="8" font-family="sans-serif" font-size="11" fill="#f472b6" class="bubble-heart">♥</text>
+            <text x="18" y="8" font-family="sans-serif" font-size="10" fill="${theme.accent2}" class="bubble-note">♪</text>
+          </g>
         </g>
       </g>
 
-      <!-- 3. Speech / Pop-up Bubble when cat clicks (Positioned above calendar to avoid overlap) -->
-      <g class="cat-speech-bubble" transform="translate(${bubbleX}, ${bubbleY})">
-        <!-- Drop shadow -->
-        <rect x="2" y="3" width="${bubbleW}" height="${bubbleH}" rx="${bubbleH / 2}" fill="rgba(0, 0, 0, 0.3)" />
-        <!-- Main Bubble Pill -->
-        <rect x="0" y="0" width="${bubbleW}" height="${bubbleH}" rx="${bubbleH / 2}" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.5" />
-        <!-- Pointer notch pointing down towards cat and tile -->
-        <polygon points="166,${bubbleH} 172,${bubbleH + 7} 178,${bubbleH}" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.5" />
-        <line x1="167" y1="${bubbleH - 0.5}" x2="177" y2="${bubbleH - 0.5}" stroke="${bubbleBg}" stroke-width="2.5" />
-
-        <!-- Speech bubble text -->
-        <text x="${bubbleW / 2}" y="20.5" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="${bubbleText}" text-anchor="middle" letter-spacing="0.2">
-          🐾 Click! ${stats.total} contributions in the last year! ☕
-        </text>
-
-        <!-- Floating hearts and music notes -->
-        <g class="bubble-floaters">
-          <text x="${bubbleW - 20}" y="8" font-family="sans-serif" font-size="11" fill="#f472b6" class="bubble-heart">♥</text>
-          <text x="18" y="8" font-family="sans-serif" font-size="10" fill="${theme.accent2}" class="bubble-note">♪</text>
+      <!-- 4. Floating Thought Cloud from Cat Saying "meoww~ 🐾" Before Sleeping -->
+      <g transform="translate(565, 118)">
+        <g class="cat-meow-cloud">
+          <!-- Thought puffs leading down to cat on desk cushion -->
+          <circle cx="34" cy="38" r="2.2" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1" />
+          <circle cx="28" cy="31" r="3.5" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.2" />
+          <!-- Cloud body with soft shadow -->
+          <rect x="2" y="2" width="86" height="26" rx="13" fill="rgba(0,0,0,0.25)" />
+          <rect x="0" y="0" width="86" height="26" rx="13" fill="${bubbleBg}" stroke="${bubbleBorder}" stroke-width="1.4" />
+          <!-- Fluffy cloud bumps on top -->
+          <circle cx="24" cy="2" r="7" fill="${bubbleBg}" />
+          <circle cx="46" cy="1" r="8" fill="${bubbleBg}" />
+          <circle cx="66" cy="3" r="6" fill="${bubbleBg}" />
+          <path d="M 17 4 Q 24 -4 31 3 Q 46 -6 54 3 Q 66 -2 72 5" stroke="${bubbleBorder}" stroke-width="1.3" fill="none" />
+          <text x="43" y="17.5" font-family="'Space Grotesk', -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="${bubbleText}" text-anchor="middle" letter-spacing="0.4">
+            meoww~ 🐾
+          </text>
         </g>
       </g>
 
-      <!-- 4. The Animated Cat (Sleeping on desk beside girl, then travelling & returning) -->
+      <!-- 5. The Animated Cat (Sleeping on desk beside girl, then travelling & returning) -->
       <g class="cat-traveller-mover">
         <g class="cat-facer">
           <!-- A. SLEEP POSE (Curled up sleeping on desk cushion beside girl on top right) -->

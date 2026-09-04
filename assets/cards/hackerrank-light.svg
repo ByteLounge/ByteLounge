@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="196" height="44" viewBox="0 0 196 44" fill="none" role="img" aria-label="hackerrank: konuriyash">
+  <style><![CDATA[
+    .card-bg { fill: #f3ece1; stroke: #e5dcd0; stroke-width: 1; transition: fill 0.2s ease, stroke 0.2s ease; }
+    .card-title { font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 10.5px; font-weight: 700; fill: #2d3748; letter-spacing: 0.2px; }
+    .card-handle { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 9px; fill: #718096; }
+    .card-icon { fill: #c05621; }
+    .card-arrow { stroke: #718096; stroke-width: 2.2; fill: none; opacity: 0.45; }
+    svg:hover .card-bg { fill: #ede2d5; stroke: #c05621; stroke-width: 1.5; }
+    svg:hover .card-title { fill: #c05621; }
+    svg:hover .card-arrow { opacity: 0.95; stroke: #c05621; }
+  ]]></style>
+  <rect x="0.5" y="0.5" width="195" height="43" rx="8" class="card-bg" />
+  <g transform="translate(12 14) scale(0.6666666666666666)"><path d="M0 0v24h24V0zm9.95 8.002h1.805c.061 0 .111.05.111.111v7.767c0 .061-.05.111-.11.111H9.95c-.061 0-.111-.05-.111-.11v-2.87H7.894v2.87c0 .06-.05.11-.11.11H5.976a.11.11 0 01-.11-.11V8.112c0-.06.05-.11.11-.11h1.806c.061 0 .11.05.11.11v2.869H9.84v-2.87c0-.06.05-.11.11-.11zm2.999 0h5.778c.061 0 .111.05.111.11v7.767a.11.11 0 01-.11.112h-5.78a.11.11 0 01-.11-.11V8.111c0-.06.05-.11.11-.11z" fill="#c05621" class="card-icon" /></g>
+  <text x="36" y="18" class="card-title">HACKERRANK</text>
+  <text x="36" y="32" class="card-handle">konuriyash</text>
+  <g transform="translate(176, 11) scale(0.55)">
+    <path d="M7 17L17 7H8M17 7V16" class="card-arrow" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

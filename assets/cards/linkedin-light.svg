@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="196" height="44" viewBox="0 0 196 44" fill="none" role="img" aria-label="linkedin: yashsanikop">
+  <style><![CDATA[
+    .card-bg { fill: #f3ece1; stroke: #e5dcd0; stroke-width: 1; transition: fill 0.2s ease, stroke 0.2s ease; }
+    .card-title { font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 10.5px; font-weight: 700; fill: #2d3748; letter-spacing: 0.2px; }
+    .card-handle { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 9px; fill: #718096; }
+    .card-icon { fill: #c05621; }
+    .card-arrow { stroke: #718096; stroke-width: 2.2; fill: none; opacity: 0.45; }
+    svg:hover .card-bg { fill: #ede2d5; stroke: #c05621; stroke-width: 1.5; }
+    svg:hover .card-title { fill: #c05621; }
+    svg:hover .card-arrow { opacity: 0.95; stroke: #c05621; }
+  ]]></style>
+  <rect x="0.5" y="0.5" width="195" height="43" rx="8" class="card-bg" />
+  <g transform="translate(12 14) scale(0.6666666666666666)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#c05621" class="card-icon" /></g>
+  <text x="36" y="18" class="card-title">LINKEDIN</text>
+  <text x="36" y="32" class="card-handle">yashsanikop</text>
+  <g transform="translate(176, 11) scale(0.55)">
+    <path d="M7 17L17 7H8M17 7V16" class="card-arrow" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

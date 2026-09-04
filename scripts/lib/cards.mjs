@@ -60,7 +60,7 @@ export function posterCard(data, mode = "dark") {
 
   // Outer frame & card background
   // Proportional height enclosing expanded calendar with zero overlap and zero empty space
-  const HEIGHT = 1190;
+  const HEIGHT = 1042;
   parts.push(rect({ x: 0, y: 0, width: WIDTH, height: HEIGHT, rx: 16, fill: theme.bg }));
   parts.push(rect({ x: 0, y: 0, width: WIDTH, height: HEIGHT, rx: 16, fill: `url(#${hazeGradId})` }));
   parts.push(rect({ x: 0.5, y: 0.5, width: WIDTH - 1, height: HEIGHT - 1, rx: 15.5, stroke: theme.border, strokeWidth: 1 }));
@@ -508,69 +508,11 @@ export function posterCard(data, mode = "dark") {
     );
   });
 
-  /* ------------------------------------------------------------ 5. CONTACTS */
+  /* ------------------------------------------------------------ 5. FOOTER */
   y += LC_CARD_H + 24;
   parts.push(divider(y, theme));
 
   y += 28;
-  parts.push(
-    label("LO-FI LOUNGE  ·  CONNECT & REACH OUT", PAD, y, theme, 60)
-  );
-
-  y += 18;
-  const CONTACT_COLS = 4;
-  const CARD_W = (INNER_WIDTH - (CONTACT_COLS - 1) * 10) / CONTACT_COLS;
-  const CARD_H = 44;
-
-  CONTACTS.forEach((c, i) => {
-    const col = i % CONTACT_COLS;
-    const row = Math.floor(i / CONTACT_COLS);
-    const cx = PAD + col * (CARD_W + 10);
-    const cy = y + row * (CARD_H + 10);
-    const d = 62 + i * 2;
-    const p = ICONS[c.icon] || null;
-
-    parts.push(`
-      <a href="${c.href}" xlink:href="${c.href}" target="_blank" rel="noopener noreferrer" class="contact-card-link" aria-label="${c.label}: ${c.handle}">
-        <g class="contact-card rise d${d}">
-          ${rect({
-            x: cx,
-            y: cy,
-            width: CARD_W,
-            height: CARD_H,
-            rx: 8,
-            fill: theme.cardBg,
-            stroke: theme.border,
-            cls: "card-bg",
-          })}
-          ${p ? icon(p, { x: cx + 12, y: cy + 14, size: 16, fill: theme.accent, cls: "card-icon" }) : ""}
-          ${text(c.label, {
-            x: cx + 36,
-            y: cy + 18,
-            size: 10.5,
-            fill: theme.text,
-            weight: 700,
-            face: "display",
-            cls: "card-title",
-          })}
-          ${text(c.handle, {
-            x: cx + 36,
-            y: cy + 32,
-            size: 9,
-            fill: theme.muted,
-            weight: 400,
-            cls: "card-handle",
-          })}
-          <g transform="translate(${cx + CARD_W - 16}, ${cy + 10}) scale(0.6)" class="card-arrow" opacity="0.35">
-            <path d="M7 17L17 7M17 7H8M17 7V16" stroke="${theme.muted}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-          </g>
-        </g>
-      </a>
-    `);
-  });
-
-  /* ------------------------------------------------------------ 6. FOOTER */
-  y += 2 * (CARD_H + 10) + 24;
   parts.push(
     text("“stay cozy, keep coding, let the beats play.”  ☕ ♪", {
       x: WIDTH / 2,
@@ -579,15 +521,41 @@ export function posterCard(data, mode = "dark") {
       fill: theme.muted,
       weight: 500,
       anchor: "middle",
-      cls: "rise d68",
+      cls: "rise d60",
     })
   );
 
-  /* ------------------------------------------------------------ 7. WALKING CAT ANIMATION */
+  /* ------------------------------------------------------------ 6. WALKING CAT ANIMATION */
   // Overlay above cards so cat freely roams across sections and taps contribution heatmap
   parts.push(walkingCatAnimation(theme, stats, mode));
 
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" fill="none" role="img" aria-label="${profile.name} — lofi profile poster"><title>${profile.name} — lofi profile poster</title>${parts.join("")}</svg>`;
+}
+
+export function contactCardSvg(contact, mode = "dark") {
+  const theme = THEMES[mode];
+  const isDark = mode === "dark";
+  const p = ICONS[contact.icon] || null;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="196" height="44" viewBox="0 0 196 44" fill="none" role="img" aria-label="${escape(contact.label)}: ${escape(contact.handle)}">
+  <style><![CDATA[
+    .card-bg { fill: ${theme.cardBg}; stroke: ${theme.border}; stroke-width: 1; transition: fill 0.2s ease, stroke 0.2s ease; }
+    .card-title { font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 10.5px; font-weight: 700; fill: ${theme.text}; letter-spacing: 0.2px; }
+    .card-handle { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 9px; fill: ${theme.muted}; }
+    .card-icon { fill: ${theme.accent}; }
+    .card-arrow { stroke: ${theme.muted}; stroke-width: 2.2; fill: none; opacity: 0.45; }
+    svg:hover .card-bg { fill: ${isDark ? '#23253b' : '#ede2d5'}; stroke: ${theme.accent}; stroke-width: 1.5; }
+    svg:hover .card-title { fill: ${theme.accent}; }
+    svg:hover .card-arrow { opacity: 0.95; stroke: ${theme.accent}; }
+  ]]></style>
+  <rect x="0.5" y="0.5" width="195" height="43" rx="8" class="card-bg" />
+  ${p ? icon(p, { x: 12, y: 14, size: 16, fill: theme.accent, cls: "card-icon" }) : ""}
+  <text x="36" y="18" class="card-title">${escape(contact.label.toUpperCase())}</text>
+  <text x="36" y="32" class="card-handle">${escape(contact.handle)}</text>
+  <g transform="translate(176, 11) scale(0.55)">
+    <path d="M7 17L17 7H8M17 7V16" class="card-arrow" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>`;
 }
 
 function divider(y, theme) {

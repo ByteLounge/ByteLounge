@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="196" height="44" viewBox="0 0 196 44" fill="none" role="img" aria-label="twitter%20/%20x: @SanikopYas30163">
+  <style><![CDATA[
+    .card-bg { fill: #161724; stroke: #26283b; stroke-width: 1; transition: fill 0.2s ease, stroke 0.2s ease; }
+    .card-title { font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 10.5px; font-weight: 700; fill: #f7fafc; letter-spacing: 0.2px; }
+    .card-handle { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 9px; fill: #8e94a8; }
+    .card-icon { fill: #f6ad55; }
+    .card-arrow { stroke: #8e94a8; stroke-width: 2.2; fill: none; opacity: 0.45; }
+    svg:hover .card-bg { fill: #23253b; stroke: #f6ad55; stroke-width: 1.5; }
+    svg:hover .card-title { fill: #f6ad55; }
+    svg:hover .card-arrow { opacity: 0.95; stroke: #f6ad55; }
+  ]]></style>
+  <rect x="0.5" y="0.5" width="195" height="43" rx="8" class="card-bg" />
+  <g transform="translate(12 14) scale(0.6666666666666666)"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="#f6ad55" class="card-icon" /></g>
+  <text x="36" y="18" class="card-title">TWITTER%20/%20X</text>
+  <text x="36" y="32" class="card-handle">@SanikopYas30163</text>
+  <g transform="translate(176, 11) scale(0.55)">
+    <path d="M7 17L17 7H8M17 7V16" class="card-arrow" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

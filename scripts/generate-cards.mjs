@@ -12,7 +12,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { posterCard } from "./lib/cards.mjs";
+import { contactCardSvg, posterCard } from "./lib/cards.mjs";
+import { CONTACTS } from "./lib/contacts.mjs";
 import { collectGitHub } from "./lib/github.mjs";
 import { collectLeetCode } from "./lib/leetcode.mjs";
 import { collectViews } from "./lib/views.mjs";
@@ -93,6 +94,17 @@ async function main() {
     const svg = posterCard(data, theme);
     await write(`profile-${theme}.svg`, svg);
   }
+
+  const CARDS_DIR = join(ASSETS, "cards");
+  await mkdir(CARDS_DIR, { recursive: true });
+
+  for (const c of CONTACTS) {
+    for (const theme of THEMES) {
+      const cardSvg = contactCardSvg(c, theme);
+      await writeFile(join(CARDS_DIR, `${c.key}-${theme}.svg`), cardSvg, "utf8");
+    }
+  }
+  console.log(`  assets/cards/* (${CONTACTS.length * 2} interactive contact cards)`);
 
   console.log("✨ All Lofi Girl cards generated successfully!");
 }

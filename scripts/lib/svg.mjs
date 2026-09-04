@@ -242,24 +242,28 @@ export function getStyles(theme, mode) {
         46% { transform: translate(120px, 515px); }
         /* 6. Step down to contribution map */
         48% { transform: translate(80px, 595px); }
-        50% { transform: translate(260px, 615px); }
-        /* 7. Arrives and sits at Contribution Map */
-        52%, 67% { transform: translate(470px, 640px); }
+        50% { transform: translate(250px, 638px); } /* Tap 1: Week 17 */
+        51.8% { transform: translate(250px, 638px); }
+        /* 7. Steps across the 4 contribution clusters, tapping each */
+        53.0% { transform: translate(390px, 638px); } /* Tap 2: Week 27 */
+        54.8% { transform: translate(390px, 638px); }
+        56.0% { transform: translate(530px, 638px); } /* Tap 3: Week 37 */
+        57.8% { transform: translate(530px, 638px); }
+        59.0% { transform: translate(670px, 638px); } /* Tap 4: Week 47 */
+        66.5% { transform: translate(670px, 638px); } /* Sits admiring all contributions */
         /* 8. Step down into Problem Solving section */
-        71% { transform: translate(280px, 730px); }
-        75% { transform: translate(90px, 850px); }
-        /* 9. Walk down into Socials and Connect section */
-        78% { transform: translate(80px, 975px); }
-        81% { transform: translate(380px, 1025px); }
-        84% { transform: translate(680px, 1025px); }
-        /* 10. Near cozy footer */
-        87% { transform: translate(770px, 1055px); }
-        /* 11. Ascend back up right edge to desk */
-        91% { transform: translate(810px, 720px); }
-        94% { transform: translate(800px, 420px); }
-        97% { transform: translate(750px, 210px); }
-        /* 12. Hops back onto desk cushion right beside the girl! */
-        98%, 100% { transform: translate(576px, 166px); }
+        70% { transform: translate(450px, 750px); }
+        74% { transform: translate(160px, 790px); }
+        /* 9. Walk down and stroll along the bottom quote */
+        78% { transform: translate(120px, 945px); }
+        82% { transform: translate(430px, 945px); }
+        86% { transform: translate(720px, 945px); }
+        /* 10. Ascend back up right edge to desk */
+        89% { transform: translate(805px, 760px); }
+        92% { transform: translate(805px, 480px); }
+        95% { transform: translate(750px, 220px); }
+        /* 11. Hops back onto desk cushion right beside the girl! */
+        97.8%, 100% { transform: translate(576px, 166px); }
       }
 
       /* Horizontal Facing direction (flips around cat local center 20px, 14px) */
@@ -272,16 +276,16 @@ export function getStyles(theme, mode) {
         0%, 37% { transform: scaleX(1); }
         /* Walking left across activity */
         38%, 47% { transform: scaleX(-1); }
-        /* Walking right along map and sitting */
-        48%, 69% { transform: scaleX(1); }
+        /* Walking right along map and tapping tiles */
+        48%, 68% { transform: scaleX(1); }
         /* Walking left into problem solving */
-        70%, 79% { transform: scaleX(-1); }
-        /* Walking right across socials */
-        80%, 89% { transform: scaleX(1); }
+        69%, 76% { transform: scaleX(-1); }
+        /* Walking right along bottom quote */
+        77%, 87% { transform: scaleX(1); }
         /* Ascending right border */
-        90%, 97% { transform: scaleX(-1); }
+        88%, 97.4% { transform: scaleX(-1); }
         /* Curled on cushion facing right */
-        98%, 100% { transform: scaleX(1); }
+        97.8%, 100% { transform: scaleX(1); }
       }
 
       /* Pose Synchronization: Sleep vs Active */
@@ -290,8 +294,8 @@ export function getStyles(theme, mode) {
       }
       @keyframes catSleepPoseSync {
         0%, 26% { opacity: 1; visibility: visible; }
-        26.5%, 97.5% { opacity: 0; visibility: hidden; }
-        98%, 100% { opacity: 1; visibility: visible; }
+        26.5%, 97.4% { opacity: 0; visibility: hidden; }
+        97.8%, 100% { opacity: 1; visibility: visible; }
       }
 
       .cat-sleep-zzz {
@@ -299,7 +303,7 @@ export function getStyles(theme, mode) {
       }
       @keyframes catZzzSync {
         0%, 25.5% { opacity: 1; visibility: visible; }
-        26.5%, 98% { opacity: 0; visibility: hidden; }
+        26.5%, 98.0% { opacity: 0; visibility: hidden; }
         98.5%, 100% { opacity: 1; visibility: visible; }
       }
 
@@ -321,8 +325,8 @@ export function getStyles(theme, mode) {
       }
       @keyframes catActivePoseSync {
         0%, 26.5% { opacity: 0; visibility: hidden; }
-        27%, 97.5% { opacity: 1; visibility: visible; }
-        98%, 100% { opacity: 0; visibility: hidden; }
+        27%, 97.4% { opacity: 1; visibility: visible; }
+        97.8%, 100% { opacity: 0; visibility: hidden; }
       }
 
       /* Leg Walk Cycles: anchored at 0 0 (exact hip/shoulder joint on body) */
@@ -348,9 +352,15 @@ export function getStyles(theme, mode) {
         animation: catLegsActive 28s ease-in-out infinite;
       }
       @keyframes catLegsActive {
-        0%, 51.5% { opacity: 1; visibility: visible; }
-        52%, 67% { opacity: 0; visibility: hidden; }
-        67.5%, 100% { opacity: 1; visibility: visible; }
+        0%, 50.0% { opacity: 1; visibility: visible; }
+        50.3%, 52.0% { opacity: 0; visibility: hidden; }
+        52.3%, 53.0% { opacity: 1; visibility: visible; }
+        53.3%, 55.0% { opacity: 0; visibility: hidden; }
+        55.3%, 56.0% { opacity: 1; visibility: visible; }
+        56.3%, 58.0% { opacity: 0; visibility: hidden; }
+        58.3%, 59.0% { opacity: 1; visibility: visible; }
+        59.3%, 66.5% { opacity: 0; visibility: hidden; }
+        66.8%, 100% { opacity: 1; visibility: visible; }
       }
 
       /* Sit pose and clicking paw */
@@ -358,40 +368,54 @@ export function getStyles(theme, mode) {
         animation: catSitActive 28s ease-in-out infinite;
       }
       @keyframes catSitActive {
-        0%, 51.5% { opacity: 0; visibility: hidden; }
-        52%, 67% { opacity: 1; visibility: visible; }
-        67.5%, 100% { opacity: 0; visibility: hidden; }
+        0%, 50.0% { opacity: 0; visibility: hidden; }
+        50.3%, 52.0% { opacity: 1; visibility: visible; }
+        52.3%, 53.0% { opacity: 0; visibility: hidden; }
+        53.3%, 55.0% { opacity: 1; visibility: visible; }
+        55.3%, 56.0% { opacity: 0; visibility: hidden; }
+        56.3%, 58.0% { opacity: 1; visibility: visible; }
+        58.3%, 59.0% { opacity: 0; visibility: hidden; }
+        59.3%, 66.5% { opacity: 1; visibility: visible; }
+        66.8%, 100% { opacity: 0; visibility: hidden; }
       }
 
       .cat-eyes-walk {
         animation: catEyesWalkSync 28s ease-in-out infinite;
       }
       @keyframes catEyesWalkSync {
-        0%, 51.5% { opacity: 1; visibility: visible; }
-        52%, 67% { opacity: 0; visibility: hidden; }
-        67.5%, 100% { opacity: 1; visibility: visible; }
+        0%, 50.0% { opacity: 1; visibility: visible; }
+        50.3%, 66.5% { opacity: 0; visibility: hidden; }
+        66.8%, 100% { opacity: 1; visibility: visible; }
       }
 
       .cat-eyes-sit {
         animation: catEyesSitSync 28s ease-in-out infinite;
       }
       @keyframes catEyesSitSync {
-        0%, 51.5% { opacity: 0; visibility: hidden; }
-        52%, 67% { opacity: 1; visibility: visible; }
-        67.5%, 100% { opacity: 0; visibility: hidden; }
+        0%, 50.0% { opacity: 0; visibility: hidden; }
+        50.3%, 66.5% { opacity: 1; visibility: visible; }
+        66.8%, 100% { opacity: 0; visibility: hidden; }
       }
 
       /* Paw clicker anchored permanently at shoulder joint 0 0 (no translate offset) */
       .cat-paw-clicker {
         transform-origin: 0px 0px;
-        animation: pawClick 28s ease-in-out infinite;
+        animation: pawMultiClick 28s ease-in-out infinite;
       }
-      @keyframes pawClick {
-        0%, 54.5% { transform: rotate(0deg); }
-        55.5% { transform: rotate(-32deg); } /* raises paw */
-        56.5% { transform: rotate(18deg); }  /* taps down cleanly */
-        58.0%, 67% { transform: rotate(0deg); }
-        67.5%, 100% { transform: rotate(0deg); }
+      @keyframes pawMultiClick {
+        0%, 50.4% { transform: rotate(0deg); }
+        50.9% { transform: rotate(-30deg); } /* raise paw */
+        51.4% { transform: rotate(18deg); }  /* tap tile 1 */
+        52.0% { transform: rotate(0deg); }
+        53.4% { transform: rotate(-30deg); } /* raise paw */
+        54.0% { transform: rotate(18deg); }  /* tap tile 2 */
+        54.8% { transform: rotate(0deg); }
+        56.4% { transform: rotate(-30deg); } /* raise paw */
+        57.0% { transform: rotate(18deg); }  /* tap tile 3 */
+        57.8% { transform: rotate(0deg); }
+        59.4% { transform: rotate(-30deg); } /* raise paw */
+        60.0% { transform: rotate(18deg); }  /* tap tile 4 */
+        60.8%, 100% { transform: rotate(0deg); }
       }
 
       /* Tail Wagging: anchored permanently at body junction (5px 14px) */
@@ -404,16 +428,50 @@ export function getStyles(theme, mode) {
         100% { transform: rotate(16deg); }
       }
 
-      /* Click Ripple Effect on the Contribution Map */
+      /* Ripple Animations for each tapped contribution cluster */
       .contrib-ripple {
-        transform-origin: center center;
-        animation: rippleContainer 28s ease-out infinite;
+        transform-origin: 0px 0px;
+        opacity: 0;
       }
-      @keyframes rippleContainer {
-        0%, 55.8% { opacity: 0; transform: scale(0.2); }
-        56.5% { opacity: 1; transform: scale(0.6); }
-        58.5% { opacity: 0.8; transform: scale(1.8); }
-        60.5% { opacity: 0; transform: scale(3.2); }
+      .contrib-ripple.r1 {
+        animation: rippleAnim1 28s ease-out infinite;
+      }
+      .contrib-ripple.r2 {
+        animation: rippleAnim2 28s ease-out infinite;
+      }
+      .contrib-ripple.r3 {
+        animation: rippleAnim3 28s ease-out infinite;
+      }
+      .contrib-ripple.r4 {
+        animation: rippleAnim4 28s ease-out infinite;
+      }
+
+      @keyframes rippleAnim1 {
+        0%, 51.0% { opacity: 0; transform: scale(0.2); }
+        51.4% { opacity: 1; transform: scale(0.6); }
+        52.4% { opacity: 0.8; transform: scale(1.8); }
+        53.4% { opacity: 0; transform: scale(3.2); }
+        100% { opacity: 0; }
+      }
+      @keyframes rippleAnim2 {
+        0%, 53.6% { opacity: 0; transform: scale(0.2); }
+        54.0% { opacity: 1; transform: scale(0.6); }
+        55.0% { opacity: 0.8; transform: scale(1.8); }
+        56.0% { opacity: 0; transform: scale(3.2); }
+        100% { opacity: 0; }
+      }
+      @keyframes rippleAnim3 {
+        0%, 56.6% { opacity: 0; transform: scale(0.2); }
+        57.0% { opacity: 1; transform: scale(0.6); }
+        58.0% { opacity: 0.8; transform: scale(1.8); }
+        59.0% { opacity: 0; transform: scale(3.2); }
+        100% { opacity: 0; }
+      }
+      @keyframes rippleAnim4 {
+        0%, 59.6% { opacity: 0; transform: scale(0.2); }
+        60.0% { opacity: 1; transform: scale(0.6); }
+        61.0% { opacity: 0.8; transform: scale(1.8); }
+        62.0% { opacity: 0; transform: scale(3.2); }
         100% { opacity: 0; }
       }
 
@@ -432,42 +490,110 @@ export function getStyles(theme, mode) {
         100% { r: 18px; opacity: 0; }
       }
 
-      /* Clicked Tile Flash Highlight */
+      /* Clicked Tile Flash Highlight for each tile */
       .tile-flash {
-        animation: tileFlash 28s ease-in-out infinite;
+        opacity: 0;
+        transform-origin: 5px 5px;
       }
-      @keyframes tileFlash {
-        0%, 55.8% { opacity: 0; transform: scale(1); }
-        56.5% { opacity: 1; transform: scale(1.35); }
-        57.5%, 65.5% { opacity: 1; transform: scale(1.15); }
-        66.5%, 100% { opacity: 0; transform: scale(1); }
+      .tile-flash.t1 {
+        animation: tileFlash1 28s ease-in-out infinite;
+      }
+      .tile-flash.t2 {
+        animation: tileFlash2 28s ease-in-out infinite;
+      }
+      .tile-flash.t3 {
+        animation: tileFlash3 28s ease-in-out infinite;
+      }
+      .tile-flash.t4 {
+        animation: tileFlash4 28s ease-in-out infinite;
+      }
+
+      @keyframes tileFlash1 {
+        0%, 51.0% { opacity: 0; transform: scale(1); }
+        51.4% { opacity: 1; transform: scale(1.4); }
+        52.2%, 66.0% { opacity: 1; transform: scale(1.15); }
+        66.8%, 100% { opacity: 0; transform: scale(1); }
+      }
+      @keyframes tileFlash2 {
+        0%, 53.6% { opacity: 0; transform: scale(1); }
+        54.0% { opacity: 1; transform: scale(1.4); }
+        54.8%, 66.0% { opacity: 1; transform: scale(1.15); }
+        66.8%, 100% { opacity: 0; transform: scale(1); }
+      }
+      @keyframes tileFlash3 {
+        0%, 56.6% { opacity: 0; transform: scale(1); }
+        57.0% { opacity: 1; transform: scale(1.4); }
+        57.8%, 66.0% { opacity: 1; transform: scale(1.15); }
+        66.8%, 100% { opacity: 0; transform: scale(1); }
+      }
+      @keyframes tileFlash4 {
+        0%, 59.6% { opacity: 0; transform: scale(1); }
+        60.0% { opacity: 1; transform: scale(1.4); }
+        60.8%, 66.0% { opacity: 1; transform: scale(1.15); }
+        66.8%, 100% { opacity: 0; transform: scale(1); }
       }
 
       /* Cat Speech Bubble Popup */
       .cat-speech-bubble {
-        transform-origin: 150px 30px;
+        transform-origin: 148px 16px;
         animation: bubblePopup 28s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
       }
       @keyframes bubblePopup {
-        0%, 55.8% {
+        0%, 50.6% {
           opacity: 0;
-          transform: scale(0.3) translateY(14px);
+          transform: scale(0.3) translateY(12px);
         }
-        56.8% {
+        51.5% {
           opacity: 1;
           transform: scale(1.06) translateY(-2px);
         }
-        57.8%, 65.5% {
+        52.5%, 65.5% {
           opacity: 1;
           transform: scale(1.0) translateY(0);
         }
-        67% {
+        66.8% {
           opacity: 0;
           transform: scale(0.7) translateY(8px);
         }
         100% {
           opacity: 0;
           transform: scale(0.3);
+        }
+      }
+
+      /* Floating Thought Cloud from Cat Saying "meoww~ 🐾" Before Sleeping */
+      .cat-meow-cloud {
+        transform-origin: 43px 20px;
+        animation: meowCloud 28s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+      }
+      @keyframes meowCloud {
+        0% {
+          opacity: 1;
+          transform: translateY(-1.5px) scale(1.0);
+        }
+        1.6% {
+          opacity: 0.95;
+          transform: translateY(-3px) scale(1.0);
+        }
+        2.8% {
+          opacity: 0;
+          transform: translateY(-8px) scale(0.75);
+        }
+        3.2%, 97.4% {
+          opacity: 0;
+          transform: translateY(12px) scale(0.35);
+        }
+        98.0% {
+          opacity: 1;
+          transform: translateY(-3px) scale(1.06);
+        }
+        98.8% {
+          opacity: 1;
+          transform: translateY(0) scale(1.0);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(-1.5px) scale(1.0);
         }
       }
 
